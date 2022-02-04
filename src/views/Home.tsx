@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View
+  ScrollView, StyleSheet
 } from "react-native";
 import fonts from "../../assets/fonts";
+import { Title } from "../components/font-based";
+import { colors } from "../style/colors";
 
 interface HomeProps {
   
@@ -12,17 +12,17 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
-    </View>
+    <ScrollView contentContainerStyle={[styles.container, colors.primaryBackground]}>
+      <Title>
+        Home
+      </Title>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   text: {
     fontSize: 30,
