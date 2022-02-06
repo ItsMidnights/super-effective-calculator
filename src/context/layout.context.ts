@@ -2,12 +2,12 @@ import { createContext } from "react";
 
 export interface LayoutContext {
   layout: string;
-  setCurrentLayout: (currentLayout: string) => void;
+  setLayout: (layout: string) => void;
 }
 
 export const LAYOUT_DEFAULT_VALUE: LayoutContext = {
   layout: "mobile",
-  setCurrentLayout: () => {}
+  setLayout: () => {}
 }
 
 export const layoutContext = createContext<LayoutContext>
