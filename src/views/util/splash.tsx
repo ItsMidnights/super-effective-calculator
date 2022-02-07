@@ -1,10 +1,15 @@
 import { useFonts } from "@expo-google-fonts/roboto";
 import LottieView from "lottie-react-native";
-import colors from "../../../assets/colors";
+import { useContext } from "react";
 import { preloadedFonts } from "../../../assets/fonts";
+import { layoutContext } from "../../context";
+import colors from "../../style/colors";
 import Positioning from "../../style/util/position";
+import style from "./splash.style";
 
 export const Splash = ({ navigation }: {navigation: any}) => {
+
+  const { layout } = useContext(layoutContext);
 
   let [loaded] = useFonts({
     ...preloadedFonts
@@ -14,7 +19,10 @@ export const Splash = ({ navigation }: {navigation: any}) => {
 
   return (
     <LottieView
-      style={[{ flex: 1, backgroundColor: colors.background }, Positioning.centered]}
+      style={[
+        colors.primaryBackground,
+        style.mobile,
+      ]}
       source={require("../../../assets/animation/lottie/pikachu.json")}
       autoPlay
       loop

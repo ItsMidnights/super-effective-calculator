@@ -5,7 +5,7 @@ import {
 import fonts from "../../assets/fonts";
 import { Title } from "../components/font-based";
 import { layoutContext } from "../context";
-import { colors } from "../style/colors";
+import colors from "../style/colors";
 
 interface HomeProps {
   
