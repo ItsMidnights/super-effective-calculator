@@ -17,12 +17,12 @@ export const Splash = ({ navigation }: {navigation: any}) => {
       style={[{ flex: 1, backgroundColor: colors.background }, Positioning.centered]}
       source={require("../../../assets/animation/lottie/pikachu.json")}
       autoPlay
-      // loop
-      loop={false}
-      onAnimationFinish={() => {
-        console.log("animation finished");
-        navigation.navigate("Home");
-      }}
+      loop
+      // loop={false}
+      // onAnimationFinish={() => {
+      //   console.log("animation finished");
+      //   navigation.navigate("Home");
+      // }}
     />
   );
 };
