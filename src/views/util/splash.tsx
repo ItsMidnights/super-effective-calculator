@@ -7,7 +7,7 @@ import colors from "../../style/colors";
 import Positioning from "../../style/util/position";
 import style from "./splash.style";
 
-export const Splash = ({ navigation }: {navigation: any}) => {
+export const Splash = ({ navigation }: { navigation: NavigationType }) => {
 
   const { layout } = useContext(layoutContext);
 
