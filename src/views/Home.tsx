@@ -4,7 +4,7 @@ import {
 } from "react-native";
 import fonts from "../../assets/fonts";
 import { Title } from "../components/font-based";
-import { layoutContext } from "../context";
+import { layoutContext } from "../context/layout";
 import colors from "../style/colors";
 
 interface HomeProps {

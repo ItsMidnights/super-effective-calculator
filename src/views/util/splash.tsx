@@ -2,7 +2,7 @@ import { useFonts } from "@expo-google-fonts/roboto";
 import LottieView from "lottie-react-native";
 import { useContext } from "react";
 import { preloadedFonts } from "../../../assets/fonts";
-import { layoutContext } from "../../context";
+import { layoutContext } from "../../context/layout";
 import colors from "../../style/colors";
 import Positioning from "../../style/util/position";
 import style from "./splash.style";

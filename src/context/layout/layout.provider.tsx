@@ -1,6 +1,6 @@
 import React, {  useEffect, useLayoutEffect } from "react";
 import { useWindowDimensions } from "react-native";
-import { layoutContext } from "../../context";
+import { layoutContext } from ".";
 import { determineLayout } from "../../functions/util/layout.function";
 import { useLayout } from "../../hooks/layout.hooks";
 
