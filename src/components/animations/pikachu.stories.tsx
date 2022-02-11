@@ -2,7 +2,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { PikachuAnimation, PikachuAnimationProps } from ".";
 
 export default {
-  component: PikachuAnimation
+  component: PikachuAnimation,
+  parameters: {}
 } as ComponentMeta<typeof PikachuAnimation>;
 
 const Template: ComponentStory<typeof PikachuAnimation> = 

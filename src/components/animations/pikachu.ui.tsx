@@ -1,4 +1,5 @@
 import Lottie from "lottie-react-native";
+import { PikachuStyles as Styles } from ".";
 import Colors from "../../style/colors";
 
 export interface PikachuAnimationUIProps {
@@ -22,6 +23,7 @@ export const PikachuAnimationUI: React.FC<PikachuAnimationUIProps> = ({
       onAnimationFinish={onAnimationFinish}
       style={[
         Colors.primaryBackground,
+        Styles.default.web
       ]}
     />
   );
