@@ -9,9 +9,7 @@ export default {
 const Template: ComponentStory<typeof PikachuAnimation> = 
   (args: PikachuAnimationProps) => <PikachuAnimation {...args}/>
 
-export const Looped = Template.bind({
-
-});
+export const Looped = Template.bind({});
 
 Looped.args = {
   loop: true,

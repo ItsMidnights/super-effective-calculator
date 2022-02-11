@@ -1,5 +1,5 @@
 import { SearchBar as ElementSearchBar } from "react-native-elements";
-import searchBarStyle from "./search-bar.style";
+import { searchBarStyles } from "."
 
 export const SearchBarUI = ({}) => {
   return (
@@ -7,10 +7,10 @@ export const SearchBarUI = ({}) => {
       platform="default"
       lightTheme={true}
       containerStyle={[
-        searchBarStyle.container,
+        searchBarStyles.container
       ]}
       inputContainerStyle={[
-        searchBarStyle.input,
+        searchBarStyles.input,
       ]}
     />
   );
