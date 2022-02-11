@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  web: {
-    maxHeight: 1080
-  }
+  mobile: {},
+  tablet: {},
+  web: {}
 });

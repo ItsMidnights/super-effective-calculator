@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Lottie from "lottie-react-native";
-import { PikachuStyles as Styles } from ".";
+import pikachuStyles from "./pikachu.style";
 import Colors from "../../style/colors";
+import { layoutContext } from "../../context/layout";
+import { getStyleByLayout } from "../../style/util/functions";
 
 export interface PikachuAnimationUIProps {
   loop: boolean;
@@ -13,6 +16,9 @@ export const PikachuAnimationUI: React.FC<PikachuAnimationUIProps> = ({
   autoPlay,
   onAnimationFinish
  }) => {
+
+  const { layout } = useContext(layoutContext);
+
   return (
     <Lottie 
       source={
@@ -23,7 +29,7 @@ export const PikachuAnimationUI: React.FC<PikachuAnimationUIProps> = ({
       onAnimationFinish={onAnimationFinish}
       style={[
         Colors.primaryBackground,
-        Styles.default.web
+        pikachuStyles[layout],
       ]}
     />
   );
