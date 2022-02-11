@@ -4,23 +4,19 @@ import {
 } from "react-native";
 import fonts from "../../assets/fonts";
 import { Title } from "../components/font-based";
-import { layoutContext } from "../context";
-import { colors } from "../style/colors";
+import { layoutContext } from "../context/layout";
+import { ScreenProps } from "../routes/routes.types";
+import colors from "../style/colors";
 
-interface HomeProps {
-  
-};
 
-export const Home: React.FC<HomeProps> = ({}) => {
+export const Home: React.FC<ScreenProps> = ({}) => {
 
   const { layout } = useContext(layoutContext);
 
   return (
     <ScrollView contentContainerStyle={[styles.container, colors.primaryBackground]}>
       <Title>
-        {
-          layout
-        }
+        { layout }
       </Title>
     </ScrollView>
   );

@@ -1,27 +1,20 @@
 import { useFonts } from "@expo-google-fonts/roboto";
-import LottieView from "lottie-react-native";
-import colors from "../../../assets/colors";
+import React from "react";
 import { preloadedFonts } from "../../../assets/fonts";
-import Positioning from "../../style/util/position";
+import { PikachuAnimation } from "../../components/animations";
+import { ScreenProps } from "../../routes/routes.types";
 
-export const Splash = ({ navigation }: {navigation: any}) => {
+export const Splash: React.FC<ScreenProps> = ({ navigation }) => {
 
   let [loaded] = useFonts({
     ...preloadedFonts
   });
 
-  // const navigation = useNavigation();
-
   return (
-    <LottieView
-      style={[{ flex: 1, backgroundColor: colors.background }, Positioning.centered]}
-      source={require("../../../assets/animation/lottie/pikachu.json")}
-      autoPlay
-      // loop
-      loop={false}
+    <PikachuAnimation 
+      loop={true}
       onAnimationFinish={() => {
-        console.log("animation finished");
-        navigation.navigate("Home");
+        navigation.navigate("Home")
       }}
     />
   );

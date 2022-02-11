@@ -1,11 +1,2 @@
-
-const baseColors = {
-  background: "#4C3F91",
-  text: "#FFFFFF",
-}
-
-
-export default {
-  background: baseColors.background,
-  text: baseColors.text,
-};
+export const primary_color = "#4C3F91";
+export const white = "#FFF";

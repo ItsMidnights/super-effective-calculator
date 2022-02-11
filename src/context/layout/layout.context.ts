@@ -1,7 +1,8 @@
 import { createContext } from "react";
+import { LayoutType } from "../../types";
 
 export interface LayoutContext {
-  layout: string;
+  layout: LayoutType;
   setLayout: (layout: string) => void;
 }
 

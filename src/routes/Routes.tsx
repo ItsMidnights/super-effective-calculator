@@ -1,14 +1,17 @@
+import { createStackNavigator } from "@react-navigation/stack";
 import { Home, Splash } from "../views";
-import { Stack } from "./util";
+import { RootStackParamList } from "./routes.types";
+
+const RootStack = createStackNavigator<RootStackParamList>();
 
 export const Routes = () => (
-  <Stack.Navigator
+  <RootStack.Navigator
     initialRouteName="Splash"
     screenOptions={{
       headerShown: false
     }} 
   >
-    <Stack.Screen name="Splash" component={Splash} />
-    <Stack.Screen name="Home" component={Home} />
-  </Stack.Navigator>
+    <RootStack.Screen name="Splash" component={Splash} />
+    <RootStack.Screen name="Home" component={Home} />
+  </RootStack.Navigator>
 );
