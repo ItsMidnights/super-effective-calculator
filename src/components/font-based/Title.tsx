@@ -5,7 +5,7 @@ interface TitleProps {
   children: string;
 }
 
-export const Title = ({ children, }: TitleProps) => (
+export const Title = ({ children }: TitleProps) => (
   <Text style={[
     { fontSize: 30 }, 
     colors.primaryText,

@@ -1,7 +1,13 @@
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
-  mobile: {},
-  tablet: {},
-  web: {}
+export const pikachuAnimationStyles = StyleSheet.create({
+  mobile: {
+  },
+  tablet: {
+  },
+  web: {
+  },
+  webSpecific: {
+    maxHeight: "100vh"
+  }
 });

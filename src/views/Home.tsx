@@ -16,9 +16,7 @@ export const Home: React.FC<ScreenProps> = ({}) => {
   return (
     <ScrollView contentContainerStyle={[styles.container, colors.primaryBackground]}>
       <Title>
-        {
-          layout
-        }
+        { layout }
       </Title>
     </ScrollView>
   );

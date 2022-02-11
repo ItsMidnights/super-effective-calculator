@@ -2,8 +2,9 @@ import { useContext } from "react";
 import Lottie from "lottie-react-native";
 import Colors from "../../style/colors";
 import { layoutContext } from "../../context/layout";
-import { pikachuStyles } from ".";
+import { pikachuAnimationStyles } from "./pikachu.style";
 import { getStyleByLayout } from "../../style/util/functions";
+import { Platform } from "react-native";
 
 export interface PikachuAnimationUIProps {
   loop: boolean;
@@ -27,7 +28,9 @@ export const PikachuAnimationUI: React.FC<PikachuAnimationUIProps> = ({
       onAnimationFinish={onAnimationFinish}
       style={[
         Colors.primaryBackground,
-        pikachuStyles[layout],
+        Platform.OS === "web"
+        ? pikachuAnimationStyles.webSpecific
+        : pikachuAnimationStyles[layout] 
       ]}
     />
   );
