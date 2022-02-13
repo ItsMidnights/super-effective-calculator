@@ -5,8 +5,12 @@ export default StyleSheet.create({
     maxWidth: 400,
     borderRadius: 25 
   },
-  input: {
+  inputContainer: {
     backgroundColor: "#E1E8EE",
     borderRadius: 25,
+  },
+  input: {
+    fontFamily: "Roboto_300Light",
+    color: "black"
   }
 });

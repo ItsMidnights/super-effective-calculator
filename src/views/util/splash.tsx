@@ -12,7 +12,7 @@ export const Splash: React.FC<ScreenProps> = ({ navigation }) => {
 
   return (
     <PikachuAnimation 
-      loop={true}
+      loop={loaded}
       onAnimationFinish={() => {
         navigation.navigate("Home")
       }}

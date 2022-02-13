@@ -8,7 +8,7 @@ import { Platform } from "react-native";
 
 export interface PikachuAnimationUIProps {
   loop: boolean;
-  onAnimationFinish: () => void;
+  onAnimationFinish?: () => void;
 };
 
 export const PikachuAnimationUI: React.FC<PikachuAnimationUIProps> = ({
