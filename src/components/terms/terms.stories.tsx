@@ -16,18 +16,19 @@ const Template: ComponentStory<typeof Term> = (args) =>
 
 export const Default = Template.bind({});
 Default.args = {
-  name: "Pikachu"
+  term: "Pikachu"
 };
 
 export const SeenBefore = Template.bind({});
 SeenBefore.args = {
+  excess: 2,
   leftIcon: <AntDesign 
     size={24}
     name="clockcircleo"
     color="grey"
     style={{ padding: 5 }}
   />,
-  name: "Gengar",
+  term: "Gengar",
   types: ["poison", "dark", "psychic", "ground"]
 }
 

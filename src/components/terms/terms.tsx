@@ -4,17 +4,19 @@ import { TermUI, TermUIProps } from "./terms.ui";
 export type TermProps = {} & TermUIProps;
 
 export const Term: React.FC<TermProps> = ({
+  excess,
   leftIcon,
   onPress,
-  name,
+  term,
   types,
 }): JSX.Element => {
   return (
     <>
       <TermUI
+        excess={excess}
         leftIcon={leftIcon}
         onPress={onPress}
-        name={name}
+        term={term}
         types={types}
       />
     </>

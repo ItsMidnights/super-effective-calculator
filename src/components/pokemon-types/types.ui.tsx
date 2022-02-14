@@ -10,19 +10,19 @@ export type TypesUIProps = {
 
 export interface TypesUIPropTypes {
   key?: number;
-  name: PokemonTypeNames;
+  type: PokemonTypeNames;
 };
 
 export const TypesUI: React.FC<TypesUIProps> = ({
   key,
-  name,
+  type,
 }): JSX.Element => {
   return (
     <View
       style={[
         typeStyles.container,
         {
-          backgroundColor: PokemonTypeColors[name]
+          backgroundColor: PokemonTypeColors[type]
         }
       ]} 
       key={key}
@@ -33,7 +33,7 @@ export const TypesUI: React.FC<TypesUIProps> = ({
           colors.white
         ]}
       >
-        {name}
+        {type}
       </Text>
     </View>
   );

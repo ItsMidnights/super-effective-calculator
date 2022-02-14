@@ -3,76 +3,45 @@ import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../../style/colors";
 import { TypesUI } from "../pokemon-types/types.ui";
+import { Excess } from "./sub/excessBubble";
+import { LeftGroup } from "./sub/leftGroup";
+import { TypeGroup } from "./sub/typeGroup";
 import { termStyles } from "./terms.style";
 
 
 
 export interface TermUIProps {
+  excess?: number;
   leftIcon?: JSX.Element;
   onPress?: () => void;
-  name: string;
+  term: string;
   types?: string[];
 };
 
 export const TermUI: React.FC<TermUIProps> = ({
+  excess,
   leftIcon,
   onPress,
-  name,
+  term,
   types,
 }): JSX.Element => {
-
-  let moreTypes = 0;
-
   return (
     <TouchableOpacity onPress={onPress}>
     <View
       style={termStyles.container} 
     >
-        <View
-          style={termStyles.nameContainer} 
-        >
-          {
-            leftIcon != undefined
-            ? leftIcon
-            : null
-          }  
-          <Text style={termStyles.name}>{name}</Text>
-        </View>
-        <View
-          style={termStyles.typeContainer} 
-        >
-          {
-            types?.map((type, idx) => {
-
-              if (idx > 1) {
-                moreTypes += 1;
-                return;
-              }
-
-              return (
-                <TypesUI
-                  key={idx}
-                  name={type}
-                />
-              );
-            })
-          }  
-        </View>
-          {
-            moreTypes > 0
-            ? <View
-              style={[
-                termStyles.bubble,
-              ]}
-            ><Text style={[ 
-              colors.white,
-              termStyles.bubbleText
-            ]}>
-              { moreTypes + "+" }
-              </Text>
-            </View>
-            : null
-          }
+      <LeftGroup 
+        leftIcon={leftIcon} 
+        term={term}
+      />
+      <TypeGroup
+        types={types}
+      />
+        {
+          (excess != undefined) && (excess > 0)
+          ? <Excess excess={excess}/>
+          : null
+        }
     </View>
     </TouchableOpacity>
   );
