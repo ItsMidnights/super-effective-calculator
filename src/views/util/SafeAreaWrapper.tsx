@@ -9,7 +9,7 @@ export const SafeAreaWrapper = ({children}: {children: React.ReactNode}) => {
     <SafeAreaView
       style={[
         flex.one,
-        colors.purpleBackground
+        colors.purpleBackground,
       ]} 
     >
       { children }

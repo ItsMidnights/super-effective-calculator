@@ -10,29 +10,16 @@ import { ScreenProps } from "../routes/routes.types";
 import { colors } from "../style/colors";
 import { Back } from "../components/icons";
 import { Ionicons } from "@expo/vector-icons";
+import { SearchForm } from "../components/form";
 
 export const Home: React.FC<ScreenProps> = ({}) => {
-
-  const [query, setQuery] = React.useState("");
   const { layout } = React.useContext(layoutContext);
-
   return (
     <ScrollView contentContainerStyle={[
       styles.container, 
       colors.purpleBackground
     ]}>
-      <SearchBar 
-        placeholder="Search for a Pokemon"
-        value={query} 
-        onChangeText={(text) => setQuery(text)}
-        // searchIcon={
-        //   <Ionicons 
-        //     name="arrow-back" 
-        //     size={24} 
-        //     color="grey"
-        //   />
-        // }
-      />
+      <SearchForm />
     </ScrollView>
   );
 };
@@ -40,6 +27,9 @@ export const Home: React.FC<ScreenProps> = ({}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
   },
   text: {
     fontSize: 30,

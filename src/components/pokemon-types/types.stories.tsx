@@ -13,15 +13,15 @@ const Template: ComponentStory<typeof TypesUI>
 
 export const Normal = Template.bind({});
 Normal.args = {
-  name: "normal",
+  type: "normal",
 }
 
 export const Fighting = Template.bind({});
 Fighting.args = {
-  name: "fighting",
+  type: "fighting",
 }
 
 export const Fire = Template.bind({});
 Fire.args = {
-  name: "fire",
+  type: "fire",
 }
