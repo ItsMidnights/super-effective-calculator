@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export const searchBarStyles = StyleSheet.create({
   container: {
     maxWidth: 400,
     borderRadius: 25 
@@ -12,5 +12,8 @@ export default StyleSheet.create({
   input: {
     fontFamily: "Roboto_300Light",
     color: "black"
+  },
+  rightContainer: {
+    padding: 10
   }
 });

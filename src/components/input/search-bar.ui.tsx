@@ -1,28 +1,31 @@
-import { SearchBar as ElementSearchBar } from "react-native-elements";
-import { searchBarStyles } from "."
+import { 
+  SearchBar as ElementSearchBar, 
+  SearchBarProps as ElementSearchBarProps 
+} from "react-native-elements";
+import { searchBarStyles } from "./search-bar.style"
 
-export type SearchBarUIProps = {
-  handleBlur?: (text: string) => void;
-  handleChange?: (text: string) => void;
-  leftIcon?: JSX.Element;
-  onCancel?: () => void;
-  placeholder?: string;
-  value?: string;
-};
+export type SearchBarUIProps = {} & ElementSearchBarProps;
 
 export const SearchBarUI: React.FC<SearchBarUIProps> = ({
-  handleBlur,
-  handleChange,
-  leftIcon,
-  onCancel,
+  onChangeText,
   placeholder,
+  searchIcon,
   value
 }) => {
   return (
     <ElementSearchBar 
+      placeholder={placeholder}
+      value={value}
+      onChangeText={onChangeText}
+      searchIcon={searchIcon}
+      // Defaults
       lightTheme={true}
+      returnKeyType={"search"}
       containerStyle={[
         searchBarStyles.container
+      ]}
+      rightIconContainerStyle={[
+        searchBarStyles.rightContainer
       ]}
       inputContainerStyle={[
         searchBarStyles.inputContainer,
@@ -30,12 +33,6 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
       inputStyle={[
         searchBarStyles.input
       ]}
-      onCancel={onCancel!}
-      onBlur={handleBlur!}
-      onChangeText={handleChange!}
-      searchIcon={leftIcon}
-      placeholder={placeholder}
-      value={value!}
     />
   );
 }

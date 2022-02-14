@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
 import { primary_color, white } from "../../../assets/colors";
 
-export default StyleSheet.create({
-  primaryBackground: {
-    backgroundColor: primary_color
+export const colors = StyleSheet.create({
+  purple: {
+    color: primary_color
   },
-  primaryText: {
+  white: {
     color: white,
   },
+  purpleBackground: {
+    backgroundColor: primary_color
+  }
 });

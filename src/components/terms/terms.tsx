@@ -5,15 +5,17 @@ export type TermProps = {} & TermUIProps;
 
 export const Term: React.FC<TermProps> = ({
   leftIcon,
-  rightIcon,
-  name
+  onPress,
+  name,
+  types,
 }): JSX.Element => {
   return (
     <>
       <TermUI
         leftIcon={leftIcon}
-        rightIcon={rightIcon}
+        onPress={onPress}
         name={name}
+        types={types}
       />
     </>
   );

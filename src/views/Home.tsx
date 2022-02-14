@@ -4,10 +4,10 @@ import {
 } from "react-native";
 import fonts from "../../assets/fonts";
 import { Title } from "../components/font-based";
-import { SearchBar } from "react-native-elements";
+import { SearchBar } from "../components/input";
 import { layoutContext } from "../context/layout";
 import { ScreenProps } from "../routes/routes.types";
-import colors from "../style/colors";
+import { colors } from "../style/colors";
 import { Back } from "../components/icons";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -17,28 +17,21 @@ export const Home: React.FC<ScreenProps> = ({}) => {
   const { layout } = React.useContext(layoutContext);
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, colors.primaryBackground]}>
-      {/* <Title>
-        { layout }
-      </Title> */}
+    <ScrollView contentContainerStyle={[
+      styles.container, 
+      colors.purpleBackground
+    ]}>
       <SearchBar 
         placeholder="Search for a Pokemon"
-        lightTheme={true}
-        inputStyle={{
-          fontFamily: "Roboto_300Light",
-          color: "black"
-        }}
-        searchIcon={
-          <Back 
-            size={24} 
-            color="grey"
-            // name="arrow-back"
-          /> 
-        }
-        onChangeText={(text) => {
-          setQuery(text);
-        }}
         value={query} 
+        onChangeText={(text) => setQuery(text)}
+        // searchIcon={
+        //   <Ionicons 
+        //     name="arrow-back" 
+        //     size={24} 
+        //     color="grey"
+        //   />
+        // }
       />
     </ScrollView>
   );
