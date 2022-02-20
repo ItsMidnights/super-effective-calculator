@@ -25,6 +25,7 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
       // Defaults
       lightTheme={true}
       returnKeyType={"search"}
+      autoCapitalize={"none"}
       containerStyle={[
         searchBarStyles.container
       ]}
