@@ -7,6 +7,7 @@ import Axios, { AxiosResponse } from "axios";
 import { NativePokemonType, PokemonType } from "../../types/pokemon.types";
 import { mergeSort } from "../../functions/util/sort";
 import { filterDuplicates } from "../../functions/util/filter";
+import { Types } from "../pokemon-types";
 // import { FormUI, FormUIProps } from "./form.ui";
 
 export type SearchFormProps = {};
@@ -14,6 +15,8 @@ export type SearchFormProps = {};
 
 export const SearchForm: React.FC<SearchFormProps> = ({
 }): JSX.Element => {
+
+  const [types, setTypes] = React.useState<PokemonType[]>([]);
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -50,18 +53,23 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         strengths.push(...half_damage_from);
       });
 
+      let sortedWeaknesses: PokemonType[]; 
+      let sortedStrengths: PokemonType[]; 
+      let finalWeaknesses: PokemonType[];
+
       setTimeout(() => {
-        let sortedWeaknesses = mergeSort(weaknesses);
+        sortedWeaknesses = mergeSort(weaknesses);
         console.log(sortedWeaknesses);
-        let sortedStrengths = mergeSort(strengths).filter((type, idx, arr) => filterDuplicates(type, idx, arr));
+        sortedStrengths = mergeSort(strengths).filter((type, idx, arr) => filterDuplicates(type, idx, arr));
         console.log(sortedStrengths);
 
-        const filteredWeaknesses = sortedWeaknesses.filter((type) => {
+        finalWeaknesses = sortedWeaknesses.filter((type) => {
           return !sortedStrengths.find((element) => {
             return element.name === type.name;
           })
         });
-        console.log(filteredWeaknesses);
+        setTypes(finalWeaknesses);
+        console.log(finalWeaknesses);
       }, 500);
 
     }
@@ -86,6 +94,17 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         onChangeText={handleChange("term")}
         onSubmitEditing={handleSubmit}
       />
+      <View style={{
+        alignItems:"center",
+        justifyContent: "center"
+      }}>
+        {types.map((type, idx) => {
+          return <Types
+            key={idx} 
+            type={type.name}
+          />
+        })}
+      </View>
     </View>
   );
 };
