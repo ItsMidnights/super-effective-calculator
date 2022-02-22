@@ -8,6 +8,7 @@ export const pikachuAnimationStyles = StyleSheet.create({
   web: {
   },
   webSpecific: {
-    maxHeight: "100vh"
+    maxHeight: "100vh",
+    flex: 1
   }
 });
