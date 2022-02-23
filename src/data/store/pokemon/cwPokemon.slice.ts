@@ -10,6 +10,7 @@ const initialState: CWPokemonState = {
   id: 0,
   name: "",
   sprite: "",
+  weight: 0,
   type: [],
   weakAgainst: [],
   status: undefined,
@@ -19,5 +20,7 @@ export const cwPokemonSlice = createSlice({
   name: "cwPokemon",
   initialState,
   reducers: {},
-  extraReducers: {}
+  extraReducers: {
+    
+  }
 });
