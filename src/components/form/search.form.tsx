@@ -58,7 +58,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       let finalWeaknesses: PokemonType[];
 
       setTimeout(() => {
-        sortedWeaknesses = mergeSort(weaknesses);
+        sortedWeaknesses = mergeSort(weaknesses).filter((type, idx, arr) => filterDuplicates(type, idx, arr));
         console.log(sortedWeaknesses);
         sortedStrengths = mergeSort(strengths).filter((type, idx, arr) => filterDuplicates(type, idx, arr));
         console.log(sortedStrengths);

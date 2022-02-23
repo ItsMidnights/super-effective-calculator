@@ -1,12 +1,14 @@
+interface GenericPokeAPIType {
+  name: string;
+  url: string;
+}
+
 export interface NativePokemonType {
   slot: number;
   type: PokemonType;
 }
 
-export interface PokemonType {
-  name: string;
-  url: string;
-}
+export interface PokemonType extends GenericPokeAPIType {};
 
 export interface SECPokemonRecord {
   id: number;
