@@ -22,6 +22,7 @@ const _merge = (left: PokemonType[], right: PokemonType[]): PokemonType[] => {
 }
 
 export const mergeSort = (a: PokemonType[]): PokemonType[] => {
+
   if (a.length <= 1) return a;
 
   const middle = Math.floor(a.length / 2);

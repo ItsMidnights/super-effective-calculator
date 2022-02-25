@@ -1,5 +1,7 @@
 const { command } = require("./util/command");
 
+// TODO make this OS agnostic
+
 const clean = () => {
   console.log("Cleaning project...\n");
   command("./node_modules/.bin/rimraf .expo/");

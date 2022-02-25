@@ -1,7 +1,8 @@
 import Axios, { AxiosError, AxiosResponse } from "axios";
+import { castNativePokemonToPokemonType } from "../../functions/util/cast";
 import { filterDuplicates } from "../../functions/util/filter";
 import { mergeSort } from "../../functions/util/sort";
-import { NativePokemonType, PokemonType } from "../../types/pokemon.types";
+import { NativePokemonType, PartialSECPokemon, PokemonType, SECPokemonRecord } from "../../types/pokemon.types";
 
 export const getPokemonByName = async (name: string): Promise<any | undefined> => {
   const response = await Axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -44,3 +45,26 @@ export const getWeaknessesByTypes = async (types: NativePokemonType[]): Promise<
 
   return weaknesses;
 }
+
+export const getSECPokemon = async (term: string) => {
+
+  const { 
+    id, 
+    name, 
+    sprites, 
+    weight, 
+    types 
+  }: PartialSECPokemon = await getPokemonByName(term);
+  const weakAgainst = await getWeaknessesByTypes(types);
+
+  const pokemon: SECPokemonRecord = {
+    id,
+    name,
+    weight,
+    sprite: sprites.front_default,
+    types: castNativePokemonToPokemonType(types),
+    weakAgainst
+  };
+
+  return pokemon;
+};
