@@ -25,7 +25,7 @@ export const Splash: React.FC<ScreenProps> = ({ navigation }) => {
       ref={AnimationRef}
       loop={false}
       onAnimationFinish={() => {
-        navigation.navigate("Home");
+        navigation.navigate("Search");
       }}
     />
   );

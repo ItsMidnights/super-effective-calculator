@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, Splash } from "../views";
+import { Search, Splash } from "../views";
 import { Pokemon } from "../views/Pokemon";
 import { RootStackParamList } from "./routes.types";
 
@@ -15,7 +15,7 @@ export const Routes = () => (
   >
     <RootStack.Screen name="Splash" component={Splash} />
     {/* <RootStack.Screen name="Home" component={Home} /> */}
-    <RootStack.Screen name="Home" component={SearchNavigator} />
+    <RootStack.Screen name="Search" component={SearchNavigator} />
   </RootStack.Navigator>
 );
 
@@ -27,8 +27,8 @@ const SearchNavigator = () => {
         headerShown: false
       }} 
     >
-    <SearchStack.Screen name="Search" component={Home} />
-    <SearchStack.Screen name="Pokemon" component={Pokemon} />
+      <SearchStack.Screen name="Search" component={Search} />
+      <SearchStack.Screen name="Pokemon" component={Pokemon} />
     </SearchStack.Navigator>
   );
 }
