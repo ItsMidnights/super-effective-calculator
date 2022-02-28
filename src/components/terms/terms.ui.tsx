@@ -1,14 +1,10 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { colors } from "../../style/colors";
-import { TypesUI } from "../pokemon-types/types.ui";
 import { Excess } from "./sub/excessBubble";
 import { LeftGroup } from "./sub/leftGroup";
 import { TypeGroup } from "./sub/typeGroup";
 import { termStyles } from "./terms.style";
-
-
 
 export interface TermUIProps {
   excess?: number;
@@ -16,7 +12,7 @@ export interface TermUIProps {
   onPress?: () => void;
   term: string;
   types?: string[];
-};
+}
 
 export const TermUI: React.FC<TermUIProps> = ({
   excess,
@@ -27,22 +23,11 @@ export const TermUI: React.FC<TermUIProps> = ({
 }): JSX.Element => {
   return (
     <TouchableOpacity onPress={onPress}>
-    <View
-      style={termStyles.container} 
-    >
-      <LeftGroup 
-        leftIcon={leftIcon} 
-        term={term}
-      />
-      <TypeGroup
-        types={types}
-      />
-        {
-          (excess != undefined) && (excess > 0)
-          ? <Excess excess={excess}/>
-          : null
-        }
-    </View>
+      <View style={termStyles.container}>
+        <LeftGroup leftIcon={leftIcon} term={term} />
+        <TypeGroup types={types} />
+        {excess != undefined && excess > 0 ? <Excess excess={excess} /> : null}
+      </View>
     </TouchableOpacity>
   );
 };
