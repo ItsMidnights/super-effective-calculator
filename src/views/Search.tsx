@@ -17,8 +17,11 @@ import { storePokemon } from "../data/asyncStorage";
 import { useFormik, useField } from "formik";
 import { getSECPokemon } from "../data/api/pokemon.get";
 import { SearchBar } from "../components/input";
+import { SECPokemonService } from "../data/services/secpokemon.service";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
+  
+  const pokemonService = new SECPokemonService();
   const { layout } = React.useContext(layoutContext);
   const [terms, setTerms] = React.useState<SECPokemonRecord[]>([]);
   const { values, handleChange, handleSubmit } = useFormik({
@@ -29,8 +32,9 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
       setTerms([]);
     },
     onSubmit: async (values) => {
-      const pokemon = await getSECPokemon(values.term);
-      await storePokemon(pokemon.name, pokemon);
+      const pokemon = await pokemonService.getPokemon(values.term);
+      const arr = await pokemonService.findAll();
+      console.log(arr);
       navigation.navigate("Pokemon", pokemon);
     },
   });
