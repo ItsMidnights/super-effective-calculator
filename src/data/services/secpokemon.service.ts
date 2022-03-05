@@ -40,6 +40,7 @@ export class SECPokemonService {
     try {
       keys = await AsyncStorage.getAllKeys();
       const arr = await AsyncStorage.multiGet(keys);
+      console.log(arr);
       const _asSECPokemonRecordArray = arr.map((val) => {
         return JSON.parse(val[1]);
       });

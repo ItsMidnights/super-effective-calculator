@@ -1,44 +1,31 @@
 import React from "react";
-import { useFormik } from "formik";
-import { View } from "react-native";
+import { NativeSyntheticEvent, TextInputSubmitEditingEventData, View } from "react-native";
 import { SearchBar } from "../input";
 import {
-  getPokemonByName,
-  getSECPokemon,
-  getWeaknessesByTypes,
-} from "../../data/api/pokemon.get";
-import {
-  NativePokemonType,
   PokemonType,
   SECPokemonRecord,
 } from "../../types/pokemon.types";
-import { Types } from "../pokemon-types";
 import { ScreenProps } from "../../routes/routes.types";
-// import { FormUI, FormUIProps } from "./form.ui";
 
 export type SearchFormProps = {
-  handleCWPokemon: (pokemon: SECPokemonRecord) => void;
-} & ScreenProps;
+  onSubmit: (term: string) => Promise<void>;
+};
 // & FormUIProps;
 
 // TODO move the stateful logic to the search view component
 export const SearchForm: React.FC<SearchFormProps> = ({
-  handleCWPokemon,
-  navigation,
-  route,
+  onSubmit,
 }): JSX.Element => {
-  const [types, setTypes] = React.useState<PokemonType[]>([]);
+  const [term, setTerm] = React.useState<string>("");
 
-  const { values, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      term: "",
-    },
-    onSubmit: async (values) => {
-      const pokemon = await getSECPokemon(values.term);
-      console.log(pokemon);
-      handleCWPokemon(pokemon);
-    },
-  });
+  const handleChange = (text: string) => {
+    setTerm(text);
+  }
+  
+  const handleClear = () => {
+    setTerm("");
+  }
+
 
   return (
     <View
@@ -51,21 +38,13 @@ export const SearchForm: React.FC<SearchFormProps> = ({
     >
       <SearchBar
         placeholder="Search for a Pokemon..."
-        value={values.term}
-        onChangeText={handleChange("term")}
-        onSubmitEditing={handleSubmit}
+        value={term}
+        onChangeText={handleChange}
+        onClear={handleClear}
+        onSubmitEditing={(e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+          onSubmit(term);
+        }}
       />
-      {/* <View style={{
-        alignItems:"center",
-        justifyContent: "center"
-      }}>
-        {types.map((type, idx) => {
-          return <Types
-            key={idx} 
-            type={type.name}
-          />
-        })}
-      </View> */}
     </View>
   );
 };

@@ -11,8 +11,9 @@ export const useLayout = (): LayoutContext => {
     setLayout(currentLayout);
   }, []);
 
+
   return {
     layout: layout,
-    setLayout: setCurrentLayout
+    setLayout: setCurrentLayout,
   }
 }

@@ -18,32 +18,36 @@ import { useFormik, useField } from "formik";
 import { getSECPokemon } from "../data/api/pokemon.get";
 import { SearchBar } from "../components/input";
 import { SECPokemonService } from "../data/services/secpokemon.service";
+import { SearchForm } from "../components/form";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   
   const pokemonService = new SECPokemonService();
   const { layout } = React.useContext(layoutContext);
   const [terms, setTerms] = React.useState<SECPokemonRecord[]>([]);
-  const { values, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      term: "",
-    },
-    onReset: () => {
-      setTerms([]);
-    },
-    onSubmit: async (values) => {
-      const pokemon = await pokemonService.getPokemon(values.term);
-      const arr = await pokemonService.findAll();
-      console.log(arr);
-      navigation.navigate("Pokemon", pokemon);
-    },
-  });
 
-  const handleSetCWPokemon = async (pokemon: SECPokemonRecord) => {};
+  const handleSubmit = async (term: string): Promise<void> => { 
+    const pokemon = await pokemonService.getPokemon(term);
+    const arr = await pokemonService.findAll();
+    console.log(arr);
+    navigation.navigate("Pokemon", pokemon);
+  }
 
-  const handleTerms = (e?: NativeSyntheticEvent<TextInputChangeEventData>) => {
+  const handleTerms = async (term: string): Promise<void> => {
     //TODO bring up terms with debounced fuzzy
   };
+
+  React.useEffect(() => {
+    const checkPokemon = async () => {
+      const pokemon = await pokemonService.findAll();
+      console.log(pokemon);
+      return pokemon
+    }
+    // TODO URGENT ASYNC STORAGE IS NO LONGER RELIABLE
+    // LETS GET EXPO-SQLITE GOING
+    checkPokemon();
+    
+  });
 
   return (
     <ScrollView
@@ -53,20 +57,12 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
         { width: "100%" },
       ]}
     >
-      {/* <SearchForm 
-        navigation={navigation} 
-        handleCWPokemon={handleSetCWPokemon}
-      /> */}
-      <SearchBar
-        placeholder="Search for a Pokemon..."
-        value={values.term}
-        onChange={handleTerms}
-        onChangeText={handleChange("term")}
-        onSubmitEditing={handleSubmit}
+      <SearchForm 
+        onSubmit={handleSubmit}
       />
       <View>
         <Text>Hmmm... Looks empty here.</Text>
-      </View>
+      </View> 
     </ScrollView>
   );
 };

@@ -7,6 +7,7 @@ import {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH, 
 } from "../../constants/layout.constants"
+import { LayoutType } from "../../types";
 
 export const determineLayout = (width: number): string => {
   if (width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH) {
@@ -16,3 +17,22 @@ export const determineLayout = (width: number): string => {
   } 
   return MOBILE;
 }
+
+// export const layoutSpecific = <T>(
+//   specifics: ({ 
+//     [layout in LayoutType]?: T 
+//   })
+// ) => {
+//   // switch (specifics) {
+//   //   case ("mobile" in specifics): {
+//   //     return specifics.mobile
+//   //   }
+//   //   case ("tablet" in specifics): {
+//   //     return specifics.tablet
+//   //   }
+//   //   case ("web" in specifics): {
+//   //     return specifics.web
+//   //   }
+//   // }
+//   return specifics;
+// }

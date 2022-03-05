@@ -1,9 +1,14 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const searchBarStyles = StyleSheet.create({
   container: {
-    maxWidth: 400,
-    borderRadius: 25 
+    minWidth: "90%",
+    ...Platform.select({
+      ios: {}
+    }),
+  },
+  searchBarContainer: {
+    borderRadius: 25
   },
   inputContainer: {
     backgroundColor: "#E1E8EE",
@@ -17,3 +22,17 @@ export const searchBarStyles = StyleSheet.create({
     padding: 10
   }
 });
+
+
+
+// export const layoutSpecific = StyleSheet.create({
+//   mobile: StyleSheet.create({
+//     ...searchFormStyles,
+//   }),
+//   tablet: StyleSheet.create({
+//     ...searchFormStyles
+//   }),
+//   web: StyleSheet.create({
+//     ...searchFormStyles,
+//   }),
+// });

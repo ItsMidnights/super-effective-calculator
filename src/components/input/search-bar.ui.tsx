@@ -1,3 +1,5 @@
+import React from "react";
+import { View, Platform } from "react-native";
 import { 
   SearchBar as ElementSearchBar, 
   SearchBarProps as ElementSearchBarProps 
@@ -15,29 +17,33 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
   value
 }) => {
   return (
-    <ElementSearchBar 
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onChangeText={onChangeText}
-      searchIcon={searchIcon}
-      onSubmitEditing={onSubmitEditing}
-      // Defaults
-      lightTheme={true}
-      returnKeyType={"search"}
-      autoCapitalize={"none"}
-      containerStyle={[
-        searchBarStyles.container
-      ]}
-      rightIconContainerStyle={[
-        searchBarStyles.rightContainer
-      ]}
-      inputContainerStyle={[
-        searchBarStyles.inputContainer,
-      ]}
-      inputStyle={[
-        searchBarStyles.input
-      ]}
-    />
+    <View style={[
+      searchBarStyles.container,
+    ]}>
+      <ElementSearchBar 
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onChangeText={onChangeText}
+        searchIcon={searchIcon}
+        onSubmitEditing={onSubmitEditing}
+        // Defaults
+        lightTheme={true}
+        returnKeyType={"search"}
+        autoCapitalize={"none"}
+        containerStyle={[
+          searchBarStyles.searchBarContainer,
+        ]}
+        rightIconContainerStyle={[
+          searchBarStyles.rightContainer,
+        ]}
+        inputContainerStyle={[
+          searchBarStyles.inputContainer,
+        ]}
+        inputStyle={[
+          searchBarStyles.input,
+        ]}
+      />
+    </View>
   );
 }
