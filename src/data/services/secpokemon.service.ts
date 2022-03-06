@@ -1,8 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Repository } from "typeorm";
 import { SECPokemonRecord } from "../../types/pokemon.types";
 import { getSECPokemon } from "../api/pokemon.get";
+import { Pokemon } from "../model/pokemon.model";
 
 export class SECPokemonService {
+
   constructor() {}
   
   // TODO step 1: save a pokemon 

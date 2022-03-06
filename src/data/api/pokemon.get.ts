@@ -46,6 +46,7 @@ export const getWeaknessesByTypes = async (types: NativePokemonType[]): Promise<
   return weaknesses;
 }
 
+// TODO needs error handling
 export const getSECPokemon = async (term: string) => {
 
   const { 
