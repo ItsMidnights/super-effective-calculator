@@ -1,34 +1,44 @@
 import React from "react";
 
-import { Image, View, Text } from "react-native";
+import { Image, View, Text, FlatList } from "react-native";
+import { colors, fonts } from "../../style";
+import { PokemonType } from "../../types/pokemon.types";
+import { Types } from "../pokemon-types";
+import { H1 } from "../text";
 
 export interface PokemonUIProps {
-  id: number;
-  name: string;
-  weight: number;
   sprite: string;
+  types: PokemonType[]
 }
 
 export const PokemonUI: React.FC<PokemonUIProps> = ({
-  id,
-  name,
-  weight,
   sprite,
+  types
 }): JSX.Element => {
   return (
-    <View>
-    <Image
-      source={{
-        uri: sprite
-      }}
-      style={{
-        width: 300,
-        height: 300,
-      }}
-    />
-    <Text>ID: {JSON.stringify(id)}</Text>
-    <Text>NAME: {name}</Text>
-    <Text>WEIGHT: {JSON.stringify(weight)}</Text>
+    <View style={{
+      alignItems: "center",
+      paddingBottom: 20
+    }}>
+      <Image
+        source={{
+          uri: sprite
+        }}
+        style={{
+          width: 200,
+          height: 200,
+        }}
+      />
+      <FlatList 
+        data={types}
+        keyExtractor={(_, idx) => idx.toLocaleString()}
+        contentContainerStyle={{ flexDirection: "row" }}
+        renderItem={({item}) => (
+          <Types 
+            type={item.name}
+          />
+        )}
+      />
     </View>
   );
 };

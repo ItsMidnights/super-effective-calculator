@@ -14,7 +14,6 @@ export interface TypesUIPropTypes {
 };
 
 export const TypesUI: React.FC<TypesUIProps> = ({
-  key,
   type,
 }): JSX.Element => {
   return (
@@ -25,7 +24,6 @@ export const TypesUI: React.FC<TypesUIProps> = ({
           backgroundColor: PokemonTypeColors[type]
         }
       ]} 
-      key={key}
     >
       <Text
         style={[

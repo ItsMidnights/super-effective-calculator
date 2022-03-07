@@ -24,7 +24,7 @@ export interface SECPokemonRecord {
   sprite: string;
   weight: number;
   types: PokemonType[];
-  weakAgainst: PokemonType | PokemonType[];
+  weakAgainst: PokemonType[];
 }
 
 

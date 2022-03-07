@@ -1,14 +1,13 @@
 import React from "react";
 import {
-  Image,
-  ImageSourcePropType,
+  FlatList,
   Platform,
-  ScrollView,
-  Text,
   View,
+  Image
 } from "react-native";
 import { Back } from "../../components/icons";
 import { PokemonUI as PokemonView } from "../../components/pokemon";
+import { Types } from "../../components/pokemon-types";
 import { H1 } from "../../components/text/h1";
 import { ScreenProps } from "../../routes/routes.types";
 import { background } from "../../style";
@@ -46,18 +45,30 @@ export const Pokemon: React.FC<PokemonProps> = ({
         />
         <H1
           style={{ fontSize: 15 }}
-        >{name.toUpperCase()}</H1>
+        >{name.toLocaleUpperCase()}</H1>
         <View style={{ height: 40, width: 40} }></View>
       </View>
 
       <PokemonView 
-        id={id} 
-        name={name}
-        weight={weight}
-        sprite={sprite}
+        sprite={sprite} 
+        types={types}
       />
-      <Text>TYPES: {JSON.stringify(types)}</Text>
-      <Text>WEAK AGAINST: {JSON.stringify(weakAgainst)}</Text>
+
+        <H1 style={{alignSelf: "center", fontSize: 20}}>Weaknesses: </H1>
+        <FlatList 
+          data={weakAgainst}
+          keyExtractor={(_, idx) => idx.toLocaleString()}
+          contentContainerStyle={{
+            paddingTop: 10,
+            width: "50%",
+            alignSelf: "center"
+          }}
+          renderItem={({item}) => (
+            <Types 
+              type={item.name}
+            />
+          )}
+        />
     </View>
   );
 };

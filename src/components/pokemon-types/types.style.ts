@@ -7,6 +7,7 @@ export const typeStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
+    margin: 5
   },
   name: {
     padding: 10,
