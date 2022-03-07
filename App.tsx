@@ -5,15 +5,18 @@ import LayoutProvider from "./src/context/layout/layout.provider";
 import { SafeAreaView, Platform } from "react-native";
 import { primary_color } from "./assets/colors";
 import { injectWebCss } from "./src/functions/util";
+import { DatabaseConnectionProvider } from "./src/context/pokemon";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <LayoutProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
-          <Routes />
-        </SafeAreaView>
-      </LayoutProvider>
+      <DatabaseConnectionProvider>      
+        <LayoutProvider>
+          <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
+            <Routes />
+          </SafeAreaView>
+        </LayoutProvider>
+      </DatabaseConnectionProvider>
     </NavigationContainer>
   );
 }

@@ -19,33 +19,51 @@ import { getSECPokemon } from "../data/api/pokemon.get";
 import { SearchBar } from "../components/input";
 import { SECPokemonService } from "../data/services/secpokemon.service";
 import { SearchForm } from "../components/form";
+import { useDatabaseConnection } from "../context/pokemon";
+import { getConnectionManager, getRepository, Repository } from "typeorm";
+import { Pokemon } from "../data/model/pokemon.model";
+import { PokemonRepository } from "../data/repository/pokemon.repository";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   
-  const pokemonService = new SECPokemonService();
+  // const pokemonRepository = new SECPokemonService();
+  // const { pokemonRepository } = useDatabaseConnection();
+  const connectionManager = getConnectionManager();
+  const connection = connectionManager.create({
+    type: "expo",
+    database: "pokemon.db",
+    driver: require("expo-sqlite"),
+    entities: [Pokemon],
+    synchronize: true,
+  });
+  const pokemonRepository = new PokemonRepository(connection);
   const { layout } = React.useContext(layoutContext);
   const [terms, setTerms] = React.useState<SECPokemonRecord[]>([]);
 
-  const handleSubmit = async (term: string): Promise<void> => { 
-    const pokemon = await pokemonService.getPokemon(term);
-    const arr = await pokemonService.findAll();
+  const handleSubmit = React.useCallback(async (term: string): Promise<void> => { 
+    const pokemon = await pokemonRepository.getPokemon(term);
+    const arr = await pokemonRepository.getAllPokemon();
     console.log(arr);
-    navigation.navigate("Pokemon", pokemon);
-  }
+    // TODO IMPLEMENT THE ERROR HANDLING AND GET RID OF THIS ASSERTION
+    navigation.navigate("Pokemon", pokemon!);
+  }, []);
 
   const handleTerms = async (term: string): Promise<void> => {
     //TODO bring up terms with debounced fuzzy
   };
 
   React.useEffect(() => {
-    const checkPokemon = async () => {
-      const pokemon = await pokemonService.findAll();
-      console.log(pokemon);
-      return pokemon
+    const connect = async () => {
+      await connection.connect();
     }
+    // const checkPokemon = async () => {
+    //   const pokemon = await pokemonRepository.findAll();
+    //   console.log(pokemon);
+    //   return pokemon
+    // }
     // TODO URGENT ASYNC STORAGE IS NO LONGER RELIABLE
     // LETS GET EXPO-SQLITE GOING
-    checkPokemon();
+    // checkPokemon();
     
   });
 
