@@ -1,6 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Search, Splash } from "../views";
-import { Pokemon } from "../views/Pokemon";
+import { Search, Splash, Pokemon } from "../views";
 import { RootStackParamList } from "./routes.types";
 
 const RootStack = createStackNavigator<RootStackParamList>();

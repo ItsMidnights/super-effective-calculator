@@ -33,6 +33,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         {
           flex: 1,
           width: "100%",
+          padding: 20
         },
       ]}
     >
