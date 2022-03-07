@@ -15,6 +15,7 @@ import { SECPokemonRecord } from "../../types/pokemon.types";
 import { getSECPokemon } from "../../data/api/pokemon.get";
 import { SearchForm } from "../../components/form";
 import { background } from "../../style/background";
+import { P } from "../../components/text";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
 
@@ -27,9 +28,11 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     navigation.navigate("Pokemon", pokemon);
   }, []);
 
-  const handleTerms = async (term: string): Promise<void> => {
-    //TODO bring up terms with debounced fuzzy
-  };
+  React.useEffect(() => {
+    navigation.addListener("beforeRemove", () => {
+      setTerms([]);
+    });
+  });
 
   return (
     <SafeAreaView
@@ -41,9 +44,18 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
       <SearchForm 
         onSubmit={handleSubmit}
       />
-      <View>
-        <Text>Hmmm... Looks empty here.</Text>
-      </View> 
+      <View
+        style={{
+          position: "absolute",
+          top: "50%",
+          height: 100,
+          width: 200
+        }} 
+      >
+        <P
+          style={{color: "grey", fontSize: 18, textAlign: "center" }} 
+        >Hmm... Looks Empty... Try searching for a pokemon to find it's weaknesses.</P>
+      </View>
     </SafeAreaView>
   );
 };
@@ -57,9 +69,5 @@ const styles = StyleSheet.create({
         paddingTop: 40
       }
     })
-  },
-  text: {
-    fontSize: 30,
-    fontFamily: fonts.body,
   },
 });

@@ -5,6 +5,7 @@ import { colors, fonts } from "../../style";
 import { PokemonType } from "../../types/pokemon.types";
 import { Types } from "../pokemon-types";
 import { H1 } from "../text";
+import { pokemonStyle } from "./pokemon.style";
 
 export interface PokemonUIProps {
   sprite: string;
@@ -16,23 +17,17 @@ export const PokemonUI: React.FC<PokemonUIProps> = ({
   types
 }): JSX.Element => {
   return (
-    <View style={{
-      alignItems: "center",
-      paddingBottom: 20
-    }}>
+    <View style={[ pokemonStyle.container ]}>
       <Image
         source={{
           uri: sprite
         }}
-        style={{
-          width: 200,
-          height: 200,
-        }}
+        style={[ pokemonStyle.image ]}
       />
       <FlatList 
         data={types}
         keyExtractor={(_, idx) => idx.toLocaleString()}
-        contentContainerStyle={{ flexDirection: "row" }}
+        contentContainerStyle={[ pokemonStyle.types ]}
         renderItem={({item}) => (
           <Types 
             type={item.name}

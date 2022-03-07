@@ -26,12 +26,10 @@ export const SearchForm: React.FC<SearchFormProps> = ({
     setTerm("");
   }
 
-
   return (
     <View
       style={[
         {
-          flex: 1,
           width: "100%",
           padding: 20
         },
@@ -43,6 +41,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         onChangeText={handleChange}
         onClear={handleClear}
         onSubmitEditing={(e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+          setTerm("")
           onSubmit(term);
         }}
       />

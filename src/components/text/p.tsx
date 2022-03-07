@@ -1,14 +1,19 @@
-import { Text } from "react-native";
+import { StyleProp, Text, TextStyle } from "react-native";
 import { colors, fonts } from "../../style";
 
-export const P = ({ children }: { children: string | string[] }) => {
+interface ParagraphProps {
+  children: string | string[];
+  style?: StyleProp<TextStyle>;
+}
+
+export const P = ({ children, style }: ParagraphProps) => {
   return (
     <>
       <Text
         style={[
           fonts.secondary,
           colors.white,
-          { fontSize: 18 }
+          style
         ]} 
       >{children}</Text>
     </>
