@@ -12,6 +12,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
+    "release": "standard-version",
     "pre-commit": "lint-staged",
     "postinstall": "husky install"
   },
