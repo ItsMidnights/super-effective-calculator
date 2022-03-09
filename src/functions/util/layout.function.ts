@@ -1,12 +1,12 @@
-import { 
-  WEB, 
-  WEB_MIN_WIDTH, 
-  MOBILE, 
-  TABLET, 
+import {
+  WEB,
+  WEB_MIN_WIDTH,
+  MOBILE,
+  TABLET,
   TABLET_MIN_WIDTH,
   MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH, 
-} from "../../constants/layout.constants"
+  TABLET_MAX_WIDTH,
+} from "../../constants/layout.constants";
 import { LayoutType } from "../../types";
 
 export const determineLayout = (width: number): string => {
@@ -14,13 +14,13 @@ export const determineLayout = (width: number): string => {
     return TABLET;
   } else if (width > WEB_MIN_WIDTH) {
     return WEB;
-  } 
+  }
   return MOBILE;
-}
+};
 
 // export const layoutSpecific = <T>(
-//   specifics: ({ 
-//     [layout in LayoutType]?: T 
+//   specifics: ({
+//     [layout in LayoutType]?: T
 //   })
 // ) => {
 //   // switch (specifics) {

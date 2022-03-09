@@ -4,11 +4,11 @@ export const searchBarStyles = StyleSheet.create({
   container: {
     minWidth: "90%",
     ...Platform.select({
-      ios: {}
+      ios: {},
     }),
   },
   searchBarContainer: {
-    borderRadius: 25
+    borderRadius: 25,
   },
   inputContainer: {
     backgroundColor: "#E1E8EE",
@@ -16,14 +16,12 @@ export const searchBarStyles = StyleSheet.create({
   },
   input: {
     fontFamily: "Roboto_300Light",
-    color: "black"
+    color: "black",
   },
   rightContainer: {
-    padding: 10
-  }
+    padding: 10,
+  },
 });
-
-
 
 // export const layoutSpecific = StyleSheet.create({
 //   mobile: StyleSheet.create({

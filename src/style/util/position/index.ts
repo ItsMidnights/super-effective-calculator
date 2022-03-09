@@ -4,5 +4,5 @@ export default StyleSheet.create({
   centered: {
     alignItems: "center",
     justifyContent: "center",
-  }
+  },
 });

@@ -9,30 +9,26 @@ import { pokemonStyle } from "./pokemon.style";
 
 export interface PokemonUIProps {
   sprite: string;
-  types: PokemonType[]
+  types: PokemonType[];
 }
 
 export const PokemonUI: React.FC<PokemonUIProps> = ({
   sprite,
-  types
+  types,
 }): JSX.Element => {
   return (
-    <View style={[ pokemonStyle.container ]}>
+    <View style={[pokemonStyle.container]}>
       <Image
         source={{
-          uri: sprite
+          uri: sprite,
         }}
-        style={[ pokemonStyle.image ]}
+        style={[pokemonStyle.image]}
       />
-      <FlatList 
+      <FlatList
         data={types}
         keyExtractor={(_, idx) => idx.toLocaleString()}
-        contentContainerStyle={[ pokemonStyle.types ]}
-        renderItem={({item}) => (
-          <Types 
-            type={item.name}
-          />
-        )}
+        contentContainerStyle={[pokemonStyle.types]}
+        renderItem={({ item }) => <Types type={item.name} />}
       />
     </View>
   );

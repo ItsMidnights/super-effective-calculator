@@ -8,8 +8,8 @@ export const Routes = () => (
   <RootStack.Navigator
     initialRouteName="Splash"
     screenOptions={{
-      headerShown: false
-    }} 
+      headerShown: false,
+    }}
   >
     <RootStack.Screen name="Splash" component={Splash} />
     <RootStack.Screen name="Search" component={Search} />

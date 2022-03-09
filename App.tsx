@@ -8,11 +8,11 @@ import { injectWebCss } from "./src/functions/util";
 export default function App() {
   return (
     <NavigationContainer>
-        <LayoutProvider>
-          <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
-            <Routes />
-          </SafeAreaView>
-        </LayoutProvider>
+      <LayoutProvider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
+          <Routes />
+        </SafeAreaView>
+      </LayoutProvider>
     </NavigationContainer>
   );
 }

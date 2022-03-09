@@ -5,24 +5,20 @@ import { H1 } from "../../../components/text";
 import { PokemonType } from "../../../types/pokemon.types";
 
 export interface WeaknessesProps {
-  weakAgainst: PokemonType[]
-};
+  weakAgainst: PokemonType[];
+}
 
 export const Weaknesses: React.FC<WeaknessesProps> = ({
-  weakAgainst
+  weakAgainst,
 }): JSX.Element => {
   return (
     <>
       <H1 style={styles.headerText}>Weaknesses: </H1>
-      <FlatList 
+      <FlatList
         data={weakAgainst}
         keyExtractor={(_, idx) => idx.toLocaleString()}
         contentContainerStyle={styles.weaknesses}
-        renderItem={({item}) => (
-          <Types 
-            type={item.name}
-          />
-        )}
+        renderItem={({ item }) => <Types type={item.name} />}
       />
     </>
   );
@@ -37,6 +33,6 @@ const styles = StyleSheet.create({
   weaknesses: {
     paddingVertical: 10,
     width: "50%",
-    alignSelf: "center"
-  }
+    alignSelf: "center",
+  },
 });

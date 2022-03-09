@@ -1,5 +1,9 @@
 import React from "react";
-import { NativeSyntheticEvent, TextInputSubmitEditingEventData, View } from "react-native";
+import {
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
+  View,
+} from "react-native";
 import { SearchBar } from "../input";
 
 export type SearchFormProps = {
@@ -15,17 +19,14 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   onClear,
   onChange,
   onSubmit,
-  value
+  value,
 }): JSX.Element => {
-  
-  
-
   return (
     <View
       style={[
         {
           width: "100%",
-          padding: 20
+          padding: 20,
         },
       ]}
     >
@@ -35,7 +36,9 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         value={value}
         onChangeText={(text: string) => onChange(text)}
         onClear={onClear}
-        onSubmitEditing={(e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+        onSubmitEditing={(
+          e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
+        ) => {
           onClear();
           onSubmit(value);
         }}

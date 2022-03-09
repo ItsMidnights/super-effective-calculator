@@ -5,8 +5,8 @@ export const pokemonStyle = StyleSheet.create({
     flex: 1,
     ...Platform.select({
       android: {
-        paddingTop: 40
-      }
+        paddingTop: 40,
+      },
     }),
-  }
+  },
 });

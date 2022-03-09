@@ -5,5 +5,5 @@ export const filterDuplicates = (
   idx: number,
   arr: PokemonType[]
 ) => {
-  return arr.findIndex(t=>(t.name===type.name)) === idx;
-} 
+  return arr.findIndex((t) => t.name === type.name) === idx;
+};

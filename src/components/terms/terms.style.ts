@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
 
 export const termStyles = StyleSheet.create({
   container: {
@@ -23,23 +23,23 @@ export const termStyles = StyleSheet.create({
     borderRadius: 20,
   },
   bubbleText: {
-    fontSize: 10
+    fontSize: 10,
   },
   nameContainer: {
     flex: 6,
-    flexDirection: "row"
+    flexDirection: "row",
   },
   typeContainer: {
     flex: 4,
     margin: 5,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   name: {
     // fontFamily: "Roboto_300Light",
     color: "grey",
     fontSize: 16,
     padding: 10,
-  }
+  },
 });

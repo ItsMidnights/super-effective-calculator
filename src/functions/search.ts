@@ -28,7 +28,7 @@ const fuzzySearch = useCallback(
       setDealers(dealersToSet);
     }
   },
-  [fuse, props.dealers],
+  [fuse, props.dealers]
 );
 // trailing edge of debounce (default) called
 // this means that the last call of all collected

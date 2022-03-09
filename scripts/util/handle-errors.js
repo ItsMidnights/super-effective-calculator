@@ -6,8 +6,8 @@ const handleErrors = (err, stderr) => {
     console.log(`stderr: ${stderr}`);
   }
   return false;
-}
+};
 
 module.exports = {
-  handleErrors
-}
+  handleErrors,
+};

@@ -9,5 +9,5 @@ export const fonts = StyleSheet.create({
   },
   bold: {
     fontWeight: "bold",
-  }
+  },
 });

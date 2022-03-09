@@ -6,10 +6,5 @@ interface TitleProps {
 }
 
 export const Title = ({ children }: TitleProps) => (
-  <Text style={[
-    { fontSize: 30 }, 
-    colors.white,
-  ]}>
-    {children}
-  </Text>
+  <Text style={[{ fontSize: 30 }, colors.white]}>{children}</Text>
 );

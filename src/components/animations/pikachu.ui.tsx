@@ -12,30 +12,29 @@ export type Ref = AnimatedLottieView;
 export interface PikachuAnimationUIProps {
   loop: boolean;
   onAnimationFinish?: () => void;
-};
+}
 
-export const PikachuAnimationUI = React.forwardRef(({
-  loop,
-  onAnimationFinish
-}: PikachuAnimationUIProps, ref: React.Ref<AnimatedLottieView>) => {
+export const PikachuAnimationUI = React.forwardRef(
+  (
+    { loop, onAnimationFinish }: PikachuAnimationUIProps,
+    ref: React.Ref<AnimatedLottieView>
+  ) => {
+    const { layout } = useContext(layoutContext);
 
-  const { layout } = useContext(layoutContext);
-
-  return (
-    <Lottie 
-      source={
-        require("../../../assets/animation/lottie/pikachu.json")
-      }
-      ref={ref}
-      autoPlay={true}
-      loop={loop}
-      onAnimationFinish={onAnimationFinish}
-      style={[
-        background.primary,
-        Platform.OS === "web"
-        ? pikachuAnimationStyles.webSpecific
-        : pikachuAnimationStyles[layout] 
-      ]}
-    />
-  );
-})
+    return (
+      <Lottie
+        source={require("../../../assets/animation/lottie/pikachu.json")}
+        ref={ref}
+        autoPlay={true}
+        loop={loop}
+        onAnimationFinish={onAnimationFinish}
+        style={[
+          background.primary,
+          Platform.OS === "web"
+            ? pikachuAnimationStyles.webSpecific
+            : pikachuAnimationStyles[layout],
+        ]}
+      />
+    );
+  }
+);

@@ -16,7 +16,7 @@ export interface PartialSECPokemon {
   types: NativePokemonType[];
 }
 
-export interface PokemonType extends GenericPokeAPIType {};
+export interface PokemonType extends GenericPokeAPIType {}
 
 export interface SECPokemonRecord {
   id: number;
@@ -26,5 +26,3 @@ export interface SECPokemonRecord {
   types: PokemonType[];
   weakAgainst: PokemonType[];
 }
-
-

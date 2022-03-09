@@ -1,11 +1,14 @@
-import React, {  useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import { layoutContext } from ".";
 import { determineLayout } from "../../functions/util/layout.function";
 import { useLayout } from "../../hooks/layout.hooks";
 
-export default function ({ children }: { children: React.ReactNode }): JSX.Element {
-
+export default function ({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
   const layout = useLayout();
   const { width } = useWindowDimensions();
 
@@ -15,8 +18,6 @@ export default function ({ children }: { children: React.ReactNode }): JSX.Eleme
   }, [width]);
 
   return (
-    <layoutContext.Provider value={layout}>
-      { children }
-    </layoutContext.Provider>
+    <layoutContext.Provider value={layout}>{children}</layoutContext.Provider>
   );
 }

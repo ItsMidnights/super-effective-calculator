@@ -1,5 +1,3 @@
 import { StyleSheet } from "react-native";
 
-export const searchFormStyles = StyleSheet.create({
-
-});
+export const searchFormStyles = StyleSheet.create({});

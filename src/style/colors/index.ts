@@ -3,7 +3,7 @@ import { primary_color, white } from "../../../assets/colors";
 
 export const colors = StyleSheet.create({
   primary: {
-    color: primary_color
+    color: primary_color,
   },
   white: {
     color: white,

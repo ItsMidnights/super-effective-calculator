@@ -7,27 +7,18 @@ interface BackIconProps {
   color: string;
   onPress?: () => void;
   size: number;
-  style?: StyleProp<TextStyle>
-};
+  style?: StyleProp<TextStyle>;
+}
 
 export const Back: React.FC<BackIconProps> = ({
   color,
   onPress,
   style,
-  size
+  size,
 }): JSX.Element => {
   return (
-    <TouchableOpacity
-      onPress={onPress} 
-    >
-      <Ionicons 
-        name="arrow-back"
-        color={color}
-        size={size} 
-        style={[
-          style,
-        ]}
-      /> 
+    <TouchableOpacity onPress={onPress}>
+      <Ionicons name="arrow-back" color={color} size={size} style={[style]} />
     </TouchableOpacity>
   );
-}
+};

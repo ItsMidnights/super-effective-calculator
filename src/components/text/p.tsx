@@ -9,13 +9,7 @@ interface ParagraphProps {
 export const P = ({ children, style }: ParagraphProps) => {
   return (
     <>
-      <Text
-        style={[
-          fonts.secondary,
-          colors.white,
-          style
-        ]} 
-      >{children}</Text>
+      <Text style={[fonts.secondary, colors.white, style]}>{children}</Text>
     </>
   );
-}
+};

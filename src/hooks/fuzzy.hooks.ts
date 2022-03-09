@@ -9,15 +9,18 @@ export const useFuzzySearch = <T>(data: readonly T[]) => {
     ignoreLocation: true,
     includeScore: true,
     threshold: 0.5,
-    minMatchCharLength: 2
+    minMatchCharLength: 2,
   });
 
-  const _search = React.useCallback((text: string) => {
-    const results: Fuse.FuseResult<T>[] = fuse.search(`=${text}`, {
-      limit: 20
-    });
-    setResults(results);
-  }, [data]);
+  const _search = React.useCallback(
+    (text: string) => {
+      const results: Fuse.FuseResult<T>[] = fuse.search(`=${text}`, {
+        limit: 20,
+      });
+      setResults(results);
+    },
+    [data]
+  );
 
   const search = React.useCallback(debounce(_search, 200), [data]);
 
@@ -26,11 +29,11 @@ export const useFuzzySearch = <T>(data: readonly T[]) => {
 
     return () => {
       console.log("useFuzzySearch unmounted.");
-    }
-  }, []); 
+    };
+  }, []);
 
   return {
     results,
-    search
+    search,
   };
-}
+};

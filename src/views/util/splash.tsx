@@ -6,23 +6,22 @@ import { ScreenProps } from "../../routes/routes.types";
 import AnimatedLottieView from "lottie-react-native";
 
 export const Splash: React.FC<ScreenProps> = ({ navigation }) => {
-
   const AnimationRef = React.createRef<AnimatedLottieView>();
 
   const loadFontsAsync = async () => {
     AnimationRef.current?.play();
     await Font.loadAsync({
-      ...preloadedFonts
+      ...preloadedFonts,
     });
     setTimeout(() => {}, 300);
-  }  
+  };
 
   React.useEffect(() => {
     loadFontsAsync();
   }, []);
 
   return (
-    <PikachuAnimation 
+    <PikachuAnimation
       ref={AnimationRef}
       loop={false}
       onAnimationFinish={() => {

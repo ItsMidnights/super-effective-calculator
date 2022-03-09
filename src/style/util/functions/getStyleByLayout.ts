@@ -4,11 +4,11 @@ import { MOBILE, TABLET, WEB } from "../../../constants";
 interface getStyleByLayoutArgs {
   obj: Object;
   layout: "mobile" | "tablet" | "web";
-};
+}
 
 export const getStyleByLayout = ({
   obj,
-  layout
+  layout,
 }: getStyleByLayoutArgs): StyleProp<ViewStyle> => {
   switch (layout) {
     case MOBILE:
@@ -18,4 +18,4 @@ export const getStyleByLayout = ({
     case WEB:
       return obj[WEB];
   }
-}
+};

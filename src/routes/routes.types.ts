@@ -4,7 +4,7 @@ import { SECPokemonRecord } from "../types/pokemon.types";
 export type RootStackParamList = {
   Splash: undefined;
   Search: undefined;
-  Pokemon: SECPokemonRecord
+  Pokemon: SECPokemonRecord;
 };
 
 export type ScreenProps = StackScreenProps<RootStackParamList>;

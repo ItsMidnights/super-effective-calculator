@@ -20,48 +20,51 @@ import { useFuzzySearch } from "../../hooks/fuzzy.hooks";
 import { Term } from "../../components/terms";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
-
-
   const { layout } = React.useContext(layoutContext);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [pokemon] = React.useState(React.useMemo(() => {
-    const toLowerPokemon = Pokemon.all().map((name) => {
-      return name.toLowerCase();
-    });
-    return toLowerPokemon as readonly string[];
-  }, []));
+  const [pokemon] = React.useState(
+    React.useMemo(() => {
+      const toLowerPokemon = Pokemon.all().map((name) => {
+        return name.toLowerCase();
+      });
+      return toLowerPokemon as readonly string[];
+    }, [])
+  );
 
-  const {
-    results,
-    search
-  } = useFuzzySearch<string>(pokemon);
+  const { results, search } = useFuzzySearch<string>(pokemon);
 
   // TODO needs error handling
-  const handleSubmit = React.useCallback(async (term: string): Promise<void> => { 
-    const pokemon = await getSECPokemon(term);
-    navigation.navigate("Pokemon", pokemon);
-  }, [searchTerm]);
+  const handleSubmit = React.useCallback(
+    async (term: string): Promise<void> => {
+      const pokemon = await getSECPokemon(term);
+      navigation.navigate("Pokemon", pokemon);
+    },
+    [searchTerm]
+  );
 
   const handleClear = React.useCallback(() => {
-    setSearchTerm(""); 
-  }, [searchTerm]);
-  
-
-  const handleChange = React.useCallback((text: string) => {
-    // console.log("trying");
-    setSearchTerm(text);
-    search(text);
+    setSearchTerm("");
   }, [searchTerm]);
 
-  const handleTermPress = React.useCallback(async (term: string) => {
-    const pokemon = await getSECPokemon(term);
-    navigation.navigate("Pokemon", pokemon);
-  }, [results, searchTerm]);
+  const handleChange = React.useCallback(
+    (text: string) => {
+      // console.log("trying");
+      setSearchTerm(text);
+      search(text);
+    },
+    [searchTerm]
+  );
+
+  const handleTermPress = React.useCallback(
+    async (term: string) => {
+      const pokemon = await getSECPokemon(term);
+      navigation.navigate("Pokemon", pokemon);
+    },
+    [results, searchTerm]
+  );
 
   React.useEffect(() => {
-    navigation.addListener("beforeRemove", () => {
-
-    });
+    navigation.addListener("beforeRemove", () => {});
   }, []);
 
   React.useEffect(() => {
@@ -69,40 +72,34 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   }, [results]);
 
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        background.primary,
-      ]}
-    >
-      <SearchForm 
+    <SafeAreaView style={[styles.container, background.primary]}>
+      <SearchForm
         value={searchTerm}
         onSubmit={handleSubmit}
         onChange={handleChange}
         onClear={handleClear}
       />
-      {
-        results == null 
-        ? <View
-            style={{
-              position: "absolute",
-              top: "50%",
-              height: 100,
-              width: 200
-            }} 
-          >
-            <P
-              style={{color: "grey", fontSize: 18, textAlign: "center" }} 
-            >Hmm... Looks Empty... Try searching for a pokemon to find it's weaknesses.</P>
-          </View>
-        : null
-      }
-      <FlatList 
-        data={results} 
+      {results == null ? (
+        <View
+          style={{
+            position: "absolute",
+            top: "50%",
+            height: 100,
+            width: 200,
+          }}
+        >
+          <P style={{ color: "grey", fontSize: 18, textAlign: "center" }}>
+            Hmm... Looks Empty... Try searching for a pokemon to find it's
+            weaknesses.
+          </P>
+        </View>
+      ) : null}
+      <FlatList
+        data={results}
         keyExtractor={(_, idx) => {
           return idx.toLocaleString();
         }}
-        renderItem={({item, index}) => {
+        renderItem={({ item, index }) => {
           return (
             <Term
               key={index}
@@ -122,8 +119,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     ...Platform.select({
       android: {
-        paddingTop: 40
-      }
-    })
+        paddingTop: 40,
+      },
+    }),
   },
 });

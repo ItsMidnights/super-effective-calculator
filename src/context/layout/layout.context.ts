@@ -8,8 +8,7 @@ export interface LayoutContext {
 
 export const LAYOUT_DEFAULT_VALUE: LayoutContext = {
   layout: "mobile",
-  setLayout: () => {}
-}
+  setLayout: () => {},
+};
 
-export const layoutContext = createContext<LayoutContext>
-(LAYOUT_DEFAULT_VALUE);
+export const layoutContext = createContext<LayoutContext>(LAYOUT_DEFAULT_VALUE);
