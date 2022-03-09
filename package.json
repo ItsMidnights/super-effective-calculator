@@ -1,6 +1,6 @@
 {
   "name": "super-effective-calculator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "clean": "./node_modules/.bin/rimraf .expo/ node_modules/",
