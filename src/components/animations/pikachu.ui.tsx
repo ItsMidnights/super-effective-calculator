@@ -6,6 +6,7 @@ import { pikachuAnimationStyles } from "./pikachu.style";
 import { getStyleByLayout } from "../../style/util/functions";
 import { Platform } from "react-native";
 import AnimatedLottieView from "lottie-react-native";
+import { background } from "../../style";
 
 export type Ref = AnimatedLottieView;
 export interface PikachuAnimationUIProps {
@@ -30,7 +31,7 @@ export const PikachuAnimationUI = React.forwardRef(({
       loop={loop}
       onAnimationFinish={onAnimationFinish}
       style={[
-        colors.purpleBackground,
+        background.primary,
         Platform.OS === "web"
         ? pikachuAnimationStyles.webSpecific
         : pikachuAnimationStyles[layout] 

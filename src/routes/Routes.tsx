@@ -3,7 +3,6 @@ import { Search, Splash, Pokemon } from "../views";
 import { RootStackParamList } from "./routes.types";
 
 const RootStack = createStackNavigator<RootStackParamList>();
-const SearchStack = createStackNavigator();
 
 export const Routes = () => (
   <RootStack.Navigator
@@ -13,21 +12,7 @@ export const Routes = () => (
     }} 
   >
     <RootStack.Screen name="Splash" component={Splash} />
-    {/* <RootStack.Screen name="Home" component={Home} /> */}
-    <RootStack.Screen name="Search" component={SearchNavigator} />
+    <RootStack.Screen name="Search" component={Search} />
+    <RootStack.Screen name="Pokemon" component={Pokemon} />
   </RootStack.Navigator>
 );
-
-const SearchNavigator = () => {
-  return (
-    <SearchStack.Navigator
-      initialRouteName="Search"
-      screenOptions={{
-        headerShown: false
-      }} 
-    >
-      <SearchStack.Screen name="Search" component={Search} />
-      <SearchStack.Screen name="Pokemon" component={Pokemon} />
-    </SearchStack.Navigator>
-  );
-}

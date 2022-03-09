@@ -31,10 +31,11 @@ export const Weaknesses: React.FC<WeaknessesProps> = ({
 const styles = StyleSheet.create({
   headerText: {
     alignSelf: "center",
-    fontSize: 20
+    fontSize: 20,
+    paddingVertical: 10,
   },
   weaknesses: {
-    paddingTop: 10,
+    paddingVertical: 10,
     width: "50%",
     alignSelf: "center"
   }

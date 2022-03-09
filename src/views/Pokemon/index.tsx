@@ -33,7 +33,6 @@ export const Pokemon: React.FC<PokemonProps> = ({
       <Header 
         name={name} 
       />
-
       <PokemonView 
         sprite={sprite} 
         types={types}

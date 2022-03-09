@@ -14,13 +14,15 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
   onSubmitEditing,
   placeholder,
   searchIcon,
-  value
+  value,
+  ...props
 }) => {
   return (
     <View style={[
       searchBarStyles.container,
     ]}>
       <ElementSearchBar 
+        {...props}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

@@ -10,10 +10,11 @@ export const Splash: React.FC<ScreenProps> = ({ navigation }) => {
   const AnimationRef = React.createRef<AnimatedLottieView>();
 
   const loadFontsAsync = async () => {
+    AnimationRef.current?.play();
     await Font.loadAsync({
       ...preloadedFonts
     });
-    AnimationRef.current?.play();
+    setTimeout(() => {}, 300);
   }  
 
   React.useEffect(() => {

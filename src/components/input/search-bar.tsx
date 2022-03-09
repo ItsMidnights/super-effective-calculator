@@ -9,9 +9,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   onSubmitEditing,
   placeholder,
   searchIcon,
-  value
+  value,
+  ...props
 }) => (
   <SearchBarUI 
+    {...props}
     placeholder={placeholder}
     value={value}
     onChange={onChange}
