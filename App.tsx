@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { Routes } from "./src/routes";
 import LayoutProvider from "./src/context/layout/layout.provider";
-import { SafeAreaView, Platform } from "react-native";
+import { SafeAreaView, Platform, StatusBar } from "react-native";
 import { primary_color } from "./assets/colors";
 import { injectWebCss } from "./src/functions/util";
 
@@ -10,6 +10,7 @@ export default function App() {
     <NavigationContainer>
       <LayoutProvider>
         <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
+          <StatusBar barStyle={"light-content"} />
           <Routes />
         </SafeAreaView>
       </LayoutProvider>

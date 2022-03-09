@@ -2,15 +2,22 @@ import React from "react";
 import Fuse from "fuse.js";
 import { debounce } from "debounce";
 
-export const useFuzzySearch = <T>(data: readonly T[]) => {
+export const useFuzzySearch = <T>(
+  data: readonly T[],
+  opts?: Fuse.IFuseOptions<T>
+) => {
   const [results, setResults] = React.useState<Fuse.FuseResult<T>[]>();
-  const fuse = new Fuse(data, {
-    includeMatches: true,
-    ignoreLocation: true,
-    includeScore: true,
-    threshold: 0.5,
-    minMatchCharLength: 2,
-  });
+
+  let fuse: Fuse<T>;
+
+  if (!opts) {
+    fuse = new Fuse(data, {
+      includeScore: true,
+      includeMatches: true,
+    });
+  } else {
+    fuse = new Fuse(data, opts);
+  }
 
   const _search = React.useCallback(
     (text: string) => {
@@ -25,10 +32,10 @@ export const useFuzzySearch = <T>(data: readonly T[]) => {
   const search = React.useCallback(debounce(_search, 200), [data]);
 
   React.useEffect(() => {
-    console.log("useFuzzySearch mounted.");
+    // console.log("useFuzzySearch mounted.");
 
     return () => {
-      console.log("useFuzzySearch unmounted.");
+      // console.log("useFuzzySearch unmounted.");
     };
   }, []);
 

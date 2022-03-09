@@ -31,7 +31,13 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     }, [])
   );
 
-  const { results, search } = useFuzzySearch<string>(pokemon);
+  const { results, search } = useFuzzySearch<string>(pokemon, {
+    includeMatches: true,
+    ignoreLocation: true,
+    includeScore: true,
+    threshold: 0.5,
+    minMatchCharLength: 2,
+  });
 
   // TODO needs error handling
   const handleSubmit = React.useCallback(
