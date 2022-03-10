@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Platform, View, Image } from "react-native";
+import { FlatList, Platform, View, Image, SafeAreaView } from "react-native";
 import { Back } from "../../components/icons";
 import { Pokemon as PokemonView } from "../../components/pokemon";
 import { Types } from "../../components/pokemon-types";
@@ -16,14 +16,18 @@ export const Pokemon: React.FC<PokemonProps> = ({
   route,
   navigation,
 }): JSX.Element => {
-  const { name, sprite, types, weakAgainst } = route.params!;
+  const { data } = route.params!;
+
+  const handleBack = React.useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   return (
-    <View style={[pokemonStyle.container, background.primary]}>
-      <Header name={name} />
-      <PokemonView sprite={sprite} types={types} />
-      <Weaknesses weakAgainst={weakAgainst} />
-    </View>
+    <SafeAreaView style={[pokemonStyle.container, background.primary]}>
+      <Header name={data.name} backOnPress={handleBack} />
+      <PokemonView sprite={data.sprite} types={data.types} />
+      <Weaknesses weakAgainst={data.weakAgainst} />
+    </SafeAreaView>
   );
 };
 

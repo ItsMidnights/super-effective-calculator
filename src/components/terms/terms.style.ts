@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { fonts } from "../../style";
 
 export const termStyles = StyleSheet.create({
   container: {
@@ -37,7 +38,7 @@ export const termStyles = StyleSheet.create({
     justifyContent: "space-between",
   },
   name: {
-    // fontFamily: "Roboto_300Light",
+    ...fonts.primary,
     color: "grey",
     fontSize: 16,
     padding: 10,

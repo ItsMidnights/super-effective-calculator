@@ -6,15 +6,19 @@ import { H1 } from "../../../components/text";
 
 export type HeaderProps = {
   name: string;
+  backOnPress?: () => void;
 };
 
-export const Header: React.FC<HeaderProps> = ({ name }): JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({
+  name,
+  backOnPress,
+}): JSX.Element => {
   const navigation = useNavigation();
 
   return (
     <>
       <View style={styles.container}>
-        <Back color="white" size={40} onPress={() => navigation.goBack()} />
+        <Back color="white" size={40} onPress={backOnPress} />
 
         <H1 style={styles.headerText}>{name.toLocaleUpperCase()}</H1>
 

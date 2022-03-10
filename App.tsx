@@ -9,10 +9,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <LayoutProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}>
-          <StatusBar barStyle={"light-content"} />
-          <Routes />
-        </SafeAreaView>
+        {/* <SafeAreaView style={{ flex: 1, backgroundColor: primary_color }}> */}
+        <StatusBar
+          barStyle={"light-content"}
+          backgroundColor={"#998FC7"}
+          // backgroundColor={primary_color}
+        />
+        <Routes />
+        {/* </SafeAreaView> */}
       </LayoutProvider>
     </NavigationContainer>
   );

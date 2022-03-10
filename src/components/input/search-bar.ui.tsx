@@ -31,6 +31,7 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
         lightTheme={true}
         returnKeyType={"search"}
         autoCapitalize={"none"}
+        autoCorrect={false}
         containerStyle={[searchBarStyles.searchBarContainer]}
         rightIconContainerStyle={[searchBarStyles.rightContainer]}
         inputContainerStyle={[searchBarStyles.inputContainer]}

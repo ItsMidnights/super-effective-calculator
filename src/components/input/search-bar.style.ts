@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from "react-native";
+import { fonts } from "../../style";
 
 export const searchBarStyles = StyleSheet.create({
   container: {
@@ -15,8 +16,9 @@ export const searchBarStyles = StyleSheet.create({
     borderRadius: 25,
   },
   input: {
-    fontFamily: "Roboto_300Light",
-    color: "black",
+    ...fonts.primary,
+    color: "grey",
+    fontSize: 16,
   },
   rightContainer: {
     padding: 10,

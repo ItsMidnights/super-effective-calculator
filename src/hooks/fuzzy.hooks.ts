@@ -41,6 +41,7 @@ export const useFuzzySearch = <T>(
 
   return {
     results,
+    setResults,
     search,
   };
 };

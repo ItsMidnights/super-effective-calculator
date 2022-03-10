@@ -13,15 +13,17 @@ import { layoutContext } from "../../context/layout";
 import { ScreenProps } from "../../routes/routes.types";
 import { SECPokemonRecord } from "../../types/pokemon.types";
 import { getSECPokemon } from "../../data/api/pokemon.get";
-import { SearchForm } from "../../components/form";
 import { background } from "../../style/background";
 import { P } from "../../components/text";
 import { useFuzzySearch } from "../../hooks/fuzzy.hooks";
 import { Term } from "../../components/terms";
+import { SearchBar } from "../../components/input";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   const { layout } = React.useContext(layoutContext);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
+  // TODO! make a forEach over the Pokemon Array to find the blacklist/depricated pokemon!
+  // (store logs injson and load the blacklist and use the filtered as keys)
   const [pokemon] = React.useState(
     React.useMemo(() => {
       const toLowerPokemon = Pokemon.all().map((name) => {
@@ -31,7 +33,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     }, [])
   );
 
-  const { results, search } = useFuzzySearch<string>(pokemon, {
+  const { results, setResults, search } = useFuzzySearch<string>(pokemon, {
     includeMatches: true,
     ignoreLocation: true,
     includeScore: true,
@@ -43,48 +45,65 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   const handleSubmit = React.useCallback(
     async (term: string): Promise<void> => {
       const pokemon = await getSECPokemon(term);
-      navigation.navigate("Pokemon", pokemon);
+      navigation.navigate("Pokemon", {
+        data: pokemon,
+      });
     },
     [searchTerm]
   );
 
   const handleClear = React.useCallback(() => {
     setSearchTerm("");
+    setResults([]);
   }, [searchTerm]);
 
   const handleChange = React.useCallback(
     (text: string) => {
-      // console.log("trying");
       setSearchTerm(text);
       search(text);
     },
     [searchTerm]
   );
 
+  // TODO lets get react query in and a handleNavigation callback
   const handleTermPress = React.useCallback(
     async (term: string) => {
       const pokemon = await getSECPokemon(term);
-      navigation.navigate("Pokemon", pokemon);
+      navigation.navigate("Pokemon", {
+        data: pokemon,
+      });
     },
     [results, searchTerm]
   );
+  const transitionHandler = React.useCallback(() => {
+    navigation.addListener("transitionStart", () => {
+      handleClear();
+    });
+  }, [navigation, searchTerm]);
 
   React.useEffect(() => {
-    navigation.addListener("beforeRemove", () => {});
-  }, []);
+    const unsubscribe = transitionHandler;
+    console.log("Search View Mounted");
 
-  React.useEffect(() => {
-    // console.log(results);
-  }, [results]);
+    return () => {
+      unsubscribe();
+      console.log("Search View Unmounted");
+    };
+  }, [navigation]);
 
   return (
     <SafeAreaView style={[styles.container, background.primary]}>
-      <SearchForm
-        value={searchTerm}
-        onSubmit={handleSubmit}
-        onChange={handleChange}
+      <SearchBar
+        placeholder="Search for a pokemon"
+        onCancel={handleClear}
         onClear={handleClear}
+        onChangeText={(text: string) => handleChange(text)}
+        value={searchTerm}
+        onSubmitEditing={() => {
+          handleSubmit(searchTerm);
+        }}
       />
+
       {results == null ? (
         <View
           style={{
