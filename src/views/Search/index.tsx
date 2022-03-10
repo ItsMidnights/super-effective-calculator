@@ -22,8 +22,8 @@ import { SearchBar } from "../../components/input";
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
   const { layout } = React.useContext(layoutContext);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  // TODO! make a forEach over the Pokemon Array to find the blacklist/depricated pokemon!
-  // (store logs injson and load the blacklist and use the filtered as keys)
+
+  // TODO! #19 Filter Pokemon keys with PokeAPI Whitelist
   const [pokemon] = React.useState(
     React.useMemo(() => {
       const toLowerPokemon = Pokemon.all().map((name) => {
@@ -41,7 +41,6 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     minMatchCharLength: 2,
   });
 
-  // TODO needs error handling
   const handleSubmit = React.useCallback(
     async (term: string): Promise<void> => {
       const pokemon = await getSECPokemon(term);
@@ -65,7 +64,6 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     [searchTerm]
   );
 
-  // TODO lets get react query in and a handleNavigation callback
   const handleTermPress = React.useCallback(
     async (term: string) => {
       const pokemon = await getSECPokemon(term);
