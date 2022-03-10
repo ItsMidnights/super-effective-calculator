@@ -9,7 +9,7 @@ import {
 } from "../../constants/layout.constants";
 import { LayoutType } from "../../types";
 
-export const determineLayout = (width: number): string => {
+export const determineLayout = (width: number): LayoutType => {
   if (width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH) {
     return TABLET;
   } else if (width > WEB_MIN_WIDTH) {

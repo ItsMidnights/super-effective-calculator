@@ -21,3 +21,4 @@ export const layoutSlice = createSlice({
 });
 
 export const selectLayout = (state: RootState) => state.layout.value;
+export const { update } = layoutSlice.actions;

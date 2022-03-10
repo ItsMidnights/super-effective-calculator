@@ -1,23 +1,33 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { useWindowDimensions } from "react-native";
-import { layoutContext } from ".";
+import React from "react";
+import { Dimensions } from "react-native";
+import { withDecay } from "react-native-reanimated";
+import { useDispatch, useSelector } from "react-redux";
+import { MOBILE_MAX_WIDTH } from "../../constants";
+import { selectLayout, update } from "../../data/store/layout.slice";
 import { determineLayout } from "../../functions/util/layout.function";
-import { useLayout } from "../../hooks/layout.hooks";
+import { SafeAreaWrapper } from "../../views/util/SafeAreaWrapper";
 
 export default function ({
   children,
 }: {
   children: React.ReactNode;
 }): JSX.Element {
-  const layout = useLayout();
-  const { width } = useWindowDimensions();
+  const layout = useSelector(selectLayout);
+  const dispatch = useDispatch();
 
   // Only Re-Render the children if a layout breakpoint has been hit
-  useEffect(() => {
-    layout.setLayout(determineLayout(width));
-  }, [width]);
+  React.useEffect(() => {
+    const _unsubscribe = Dimensions.addEventListener("change", ({ window }) => {
+      const { width } = window;
+      const currentLayout = determineLayout(width);
+      if (currentLayout != layout) {
+        dispatch(update(currentLayout));
+      }
+    });
+    console.log("Current Layout:\n", layout);
 
-  return (
-    <layoutContext.Provider value={layout}>{children}</layoutContext.Provider>
-  );
+    return _unsubscribe;
+  }, [layout]);
+
+  return <SafeAreaWrapper>{children}</SafeAreaWrapper>;
 }
