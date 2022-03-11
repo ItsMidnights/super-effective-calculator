@@ -86,9 +86,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     const unsubscribe = transitionHandler;
     console.log("Transition Subscription mounted");
 
-    return () => {
-      unsubscribe();
-    };
+    return unsubscribe;
   }, [navigation]);
 
   React.useEffect(() => {
