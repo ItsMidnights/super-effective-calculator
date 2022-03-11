@@ -59,7 +59,6 @@ export const getWeaknessesByTypes = async (
   return weaknesses;
 };
 
-// TODO needs error handling
 export const getSECPokemon = async (term: string) => {
   try {
     const { id, name, sprites, weight, types }: PartialSECPokemon =
