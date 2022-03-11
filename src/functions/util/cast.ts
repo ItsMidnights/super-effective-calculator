@@ -1,13 +1,13 @@
-import { NativePokemonType, PokemonType } from "../../types/pokemon.types";
+import { PokeAPINamedResource, PokemonType } from "../../types/pokemon.types";
 
 export const castNativePokemonToPokemonType = (
-  types: NativePokemonType[]
-): PokemonType[] => {
-  const castedTypes: PokemonType[] = [];
-  types.forEach((type) => {
+  types: PokemonType[]
+): PokeAPINamedResource[] => {
+  const castedTypes: PokeAPINamedResource[] = [];
+  types.forEach((item) => {
     castedTypes.push({
-      name: type.type.name,
-      url: type.type.url,
+      name: item.type.name,
+      url: item.type.url,
     });
   });
   return castedTypes;

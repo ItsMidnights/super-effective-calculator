@@ -1,7 +1,10 @@
-import { PokemonType } from "../../types/pokemon.types";
+import { PokeAPINamedResource } from "../../types/pokemon.types";
 
-const _merge = (left: PokemonType[], right: PokemonType[]): PokemonType[] => {
-  const output: PokemonType[] = [];
+const _merge = (
+  left: PokeAPINamedResource[],
+  right: PokeAPINamedResource[]
+): PokeAPINamedResource[] => {
+  const output: PokeAPINamedResource[] = [];
 
   let leftIDX = 0;
   let rightIDX = 0;
@@ -21,7 +24,9 @@ const _merge = (left: PokemonType[], right: PokemonType[]): PokemonType[] => {
   return [...output, ...left.slice(leftIDX), ...right.slice(rightIDX)];
 };
 
-export const mergeSort = (a: PokemonType[]): PokemonType[] => {
+export const mergeSort = (
+  a: PokeAPINamedResource[]
+): PokeAPINamedResource[] => {
   if (a.length <= 1) return a;
 
   const middle = Math.floor(a.length / 2);

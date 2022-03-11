@@ -1,11 +1,11 @@
-interface PokeAPINamedResource {
+export interface PokeAPINamedResource {
   name: string;
   url: string;
 }
 
-export interface NativePokemonType {
+export interface PokemonType {
   slot: number;
-  type: PokemonType;
+  type: PokeAPINamedResource;
 }
 
 export interface PartialSECPokemon {
@@ -13,7 +13,7 @@ export interface PartialSECPokemon {
   name: string;
   weight: number;
   sprites: PokemonSprites;
-  types: NativePokemonType[];
+  types: PokemonType[];
 }
 
 export interface SECPokemonRecord {
@@ -21,8 +21,8 @@ export interface SECPokemonRecord {
   name: string;
   sprite: string;
   weight: number;
-  types: PokemonType[];
-  weakAgainst: PokemonType[];
+  types: PokeAPINamedResource[];
+  weakAgainst: PokeAPINamedResource[];
 }
 
 export interface PokeAPIPokemon {
@@ -44,6 +44,19 @@ export interface PokeAPIPokemon {
   sprites: PokemonSprites;
   stats: PokemonStat[];
   types: PokemonType[];
+}
+
+export interface PokeAPIType {
+  id: number;
+  name: string;
+  damage_relations: TypeRelations;
+  past_damage_relations: TypeRelationsPast[];
+  game_indices: GenerationGameIndex[];
+  generation: PokeAPINamedResource;
+  move_damage_class: PokeAPINamedResource;
+  names: Name[];
+  pokemon: TypePokemon[];
+  moves: PokeAPINamedResource[];
 }
 
 interface PokemonAbility {
@@ -95,10 +108,38 @@ interface PokemonSprites {
   back_shiny_female: string;
 }
 
-export interface PokemonType extends PokeAPINamedResource {}
 interface PokemonTypePast {
   generation: PokeAPINamedResource;
   types: PokemonType[];
+}
+
+interface TypePokemon {
+  slot: number;
+  pokemon: PokeAPINamedResource[];
+}
+
+interface TypeRelations {
+  no_damage_to: PokeAPINamedResource[];
+  half_damage_to: PokeAPINamedResource[];
+  double_damage_to: PokeAPINamedResource[];
+  no_damage_from: PokeAPINamedResource[];
+  half_damage_from: PokeAPINamedResource[];
+  double_damage_from: PokeAPINamedResource[];
+}
+
+interface TypeRelationsPast {
+  generation: PokeAPINamedResource;
+  damage_relations: TypeRelations;
+}
+
+interface Name {
+  name: string;
+  language: PokeAPINamedResource;
+}
+
+interface GenerationGameIndex {
+  game_index: number;
+  generation: PokeAPINamedResource;
 }
 
 interface VersionGameIndex {

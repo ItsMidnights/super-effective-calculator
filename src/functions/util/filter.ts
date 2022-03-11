@@ -1,9 +1,9 @@
-import { PokemonType } from "../../types/pokemon.types";
+import { PokeAPINamedResource } from "../../types/pokemon.types";
 
 export const filterDuplicates = (
-  type: PokemonType,
+  type: PokeAPINamedResource,
   idx: number,
-  arr: PokemonType[]
+  arr: PokeAPINamedResource[]
 ) => {
   return arr.findIndex((t) => t.name === type.name) === idx;
 };
