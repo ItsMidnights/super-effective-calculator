@@ -46,7 +46,7 @@
     "react-native-web": "0.17.1",
     "react-native-web-lottie": "^1.4.4",
     "react-query": "^3.34.16",
-    "redux-devtools-extension": "^2.13.9"
+    "recoil": "^0.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

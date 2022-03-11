@@ -3,7 +3,7 @@ import { LayoutType } from "../../types";
 
 export interface LayoutContext {
   layout: LayoutType;
-  setLayout: (layout: string) => void;
+  setLayout?: (layout: string) => void;
 }
 
 export const LAYOUT_DEFAULT_VALUE: LayoutContext = {

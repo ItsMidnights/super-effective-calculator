@@ -4,6 +4,7 @@ import {
   SearchBar as ElementSearchBar,
   SearchBarProps as ElementSearchBarProps,
 } from "react-native-elements";
+import { useLayoutListener } from "../../hooks/layout.hooks";
 import { searchBarStyles } from "./search-bar.style";
 
 export type SearchBarUIProps = {} & ElementSearchBarProps;
@@ -17,6 +18,8 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
   value,
   ...props
 }) => {
+  useLayoutListener();
+
   return (
     <View style={[searchBarStyles.container]}>
       <ElementSearchBar

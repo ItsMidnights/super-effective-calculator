@@ -1,3 +1,4 @@
+import React from "react";
 import { SearchBarUIProps } from ".";
 import { SearchBarUI } from "./search-bar.ui";
 
@@ -11,14 +12,16 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   searchIcon,
   value,
   ...props
-}) => (
-  <SearchBarUI
-    {...props}
-    placeholder={placeholder}
-    value={value}
-    onChange={onChange}
-    onChangeText={onChangeText}
-    onSubmitEditing={onSubmitEditing}
-    searchIcon={searchIcon}
-  />
-);
+}) => {
+  return (
+    <SearchBarUI
+      {...props}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      onChangeText={onChangeText}
+      onSubmitEditing={onSubmitEditing}
+      searchIcon={searchIcon}
+    />
+  );
+};

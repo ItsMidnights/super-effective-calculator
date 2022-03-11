@@ -1,18 +1,38 @@
-import { useCallback, useState } from "react";
+import React from "react";
 import { LayoutType } from "../types";
-import { MOBILE } from "../constants/layout.constants";
-import { LayoutContext } from "../context/layout";
-import { useWindowDimensions } from "react-native";
+import { Dimensions, ScaledSize } from "react-native";
+import { useRecoilState } from "recoil";
+import { layoutState } from "../data/store";
+import { determineLayout } from "../functions";
 
-export const useLayout = (): LayoutContext => {
-  const [layout, setLayout] = useState<LayoutType>(MOBILE);
+// A void hook for Window Breakpoint Listener.
+export const useLayoutListener = (): void => {
+  const [layout, setLayout] = useRecoilState(layoutState);
 
-  const setCurrentLayout = useCallback((currentLayout: LayoutType): void => {
-    setLayout(currentLayout);
-  }, []);
+  const handleUpdate = React.useCallback(
+    ({ window, screen }: { window: ScaledSize; screen: ScaledSize }) => {
+      const currentLayout = handleDetermineLayout(window.width);
+      if (currentLayout != layout) {
+        setCurrentLayout(currentLayout);
+      }
+    },
+    [layout]
+  );
 
-  return {
-    layout: layout,
-    setLayout: setCurrentLayout,
-  };
+  const handleDetermineLayout = React.useCallback(
+    (width: number) => determineLayout(width),
+    []
+  );
+
+  const setCurrentLayout = React.useCallback(
+    (currentLayout: LayoutType): void => {
+      setLayout(currentLayout);
+    },
+    [layout]
+  );
+
+  return React.useEffect(() => {
+    const _unsubscribe = Dimensions.addEventListener("change", handleUpdate);
+    return _unsubscribe;
+  }, [layout]);
 };

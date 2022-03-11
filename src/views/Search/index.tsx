@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Dimensions,
   FlatList,
   Platform,
   SafeAreaView,
@@ -9,7 +10,6 @@ import {
   View,
 } from "react-native";
 import Pokemon from "pokemon";
-import { layoutContext } from "../../context/layout";
 import { ScreenProps } from "../../routes/routes.types";
 import { SECPokemonRecord } from "../../types/pokemon.types";
 import { getSECPokemon } from "../../data/api/pokemon.get";
@@ -18,9 +18,9 @@ import { P } from "../../components/text";
 import { useFuzzySearch } from "../../hooks/fuzzy.hooks";
 import { Term } from "../../components/terms";
 import { SearchBar } from "../../components/input";
+import { useLayoutListener } from "../../hooks/layout.hooks";
 
 export const Search: React.FC<ScreenProps> = ({ navigation }) => {
-  const { layout } = React.useContext(layoutContext);
   const [searchTerm, setSearchTerm] = React.useState<string>("");
 
   // TODO! #19 Filter Pokemon keys with PokeAPI Whitelist
@@ -45,7 +45,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     async (term: string): Promise<void> => {
       const pokemon = await getSECPokemon(term);
       navigation.navigate("Pokemon", {
-        data: pokemon,
+        data: pokemon!,
       });
     },
     [searchTerm]
@@ -68,7 +68,8 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     async (term: string) => {
       const pokemon = await getSECPokemon(term);
       navigation.navigate("Pokemon", {
-        data: pokemon,
+        // TODO #20 client side error handling
+        data: pokemon!,
       });
     },
     [results, searchTerm]
@@ -79,15 +80,20 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     });
   }, [navigation, searchTerm]);
 
+  useLayoutListener();
+
   React.useEffect(() => {
     const unsubscribe = transitionHandler;
     console.log("Transition Subscription mounted");
 
     return () => {
       unsubscribe();
-      console.log("Transition Subscription unmounted");
     };
   }, [navigation]);
+
+  React.useEffect(() => {
+    console.log("Search View re rendered.");
+  });
 
   return (
     <SafeAreaView style={[styles.container, background.primary]}>
