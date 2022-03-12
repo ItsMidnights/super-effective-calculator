@@ -4,16 +4,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.1.3](https://github.com/ItsMidnights/super-effective-calculator/compare/v0.1.2...v0.1.3) (2022-03-11)
 
-
 ### Features
 
-* discovery, void hooks for event listeners with recoil state, resolves [#18](https://github.com/ItsMidnights/super-effective-calculator/issues/18) ([dc9b4a4](https://github.com/ItsMidnights/super-effective-calculator/commit/dc9b4a4243fcf2b8ddbc648bf1d772cfc173e4de))
-* resolve [#17](https://github.com/ItsMidnights/super-effective-calculator/issues/17) recoil chosen over redux ([3f1148a](https://github.com/ItsMidnights/super-effective-calculator/commit/3f1148a0716ad66ef779ae91ddaccbd5bb5ad003))
-
+- discovery, void hooks for event listeners with recoil state, resolves [#18](https://github.com/ItsMidnights/super-effective-calculator/issues/18) ([dc9b4a4](https://github.com/ItsMidnights/super-effective-calculator/commit/dc9b4a4243fcf2b8ddbc648bf1d772cfc173e4de))
+- resolve [#17](https://github.com/ItsMidnights/super-effective-calculator/issues/17) recoil chosen over redux ([3f1148a](https://github.com/ItsMidnights/super-effective-calculator/commit/3f1148a0716ad66ef779ae91ddaccbd5bb5ad003))
 
 ### Bug Fixes
 
-* error handling for api calls init ([1b6fdfc](https://github.com/ItsMidnights/super-effective-calculator/commit/1b6fdfc00103d5e8f684569fffc98e0485c2392f))
+- error handling for api calls init ([1b6fdfc](https://github.com/ItsMidnights/super-effective-calculator/commit/1b6fdfc00103d5e8f684569fffc98e0485c2392f))
 
 ### [0.1.2](https://github.com/ItsMidnights/super-effective-calculator/compare/v0.1.1...v0.1.2) (2022-03-11)
 

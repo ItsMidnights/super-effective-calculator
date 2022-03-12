@@ -1,17 +1,14 @@
 import React from "react";
 import {
-  Dimensions,
   FlatList,
   Platform,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
-  Text,
+  useWindowDimensions,
   View,
 } from "react-native";
 import Pokemon from "pokemon";
 import { ScreenProps } from "../../routes/routes.types";
-import { SECPokemonRecord } from "../../types/pokemon.types";
 import { getSECPokemon } from "../../data/api/pokemon.get";
 import { background } from "../../style/background";
 import { P } from "../../components/text";
@@ -32,6 +29,9 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
       return toLowerPokemon as readonly string[];
     }, [])
   );
+
+  // TODO
+  const { width, height } = useWindowDimensions();
 
   const { results, setResults, search } = useFuzzySearch<string>(pokemon, {
     includeMatches: true,
@@ -106,7 +106,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
         }}
       />
 
-      {results == null ? (
+      {searchTerm === "" ? (
         <View
           style={{
             position: "absolute",
