@@ -89,12 +89,9 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     return unsubscribe;
   }, [navigation]);
 
-  React.useEffect(() => {
-    console.log("Search View re rendered.");
-  });
-
   return (
     <SafeAreaView style={[styles.container, background.primary]}>
+      {/* <View style={{ flexDirection: "row" }}></View> */}
       <SearchBar
         placeholder="Search for a pokemon"
         onCancel={handleClear}

@@ -4,6 +4,7 @@ module.exports = async function (env, argv) {
   const config = await createExpoWebpackConfigAsync(env, argv);
 
   config.resolve.alias["lottie-react-native"] = "react-native-web-lottie";
+  config.resolve.alias["react-native$"] = "react-native-web";
 
   return config;
 };

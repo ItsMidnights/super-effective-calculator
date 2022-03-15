@@ -2,10 +2,13 @@ import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { Types } from "../../../components/pokemon-types";
 import { H1 } from "../../../components/text";
-import { PokemonType } from "../../../types/pokemon.types";
+import {
+  PokeAPINamedResource,
+  PokemonType,
+} from "../../../types/pokemon.types";
 
 export interface WeaknessesProps {
-  weakAgainst: PokemonType[];
+  weakAgainst: PokeAPINamedResource[];
 }
 
 export const Weaknesses: React.FC<WeaknessesProps> = ({
