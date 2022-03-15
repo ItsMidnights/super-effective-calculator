@@ -9,6 +9,8 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = () => {
   const [searchBarShown, setSearchBarShown] = React.useState(false);
 
+  // TODO #23 Home Componet Compartmentalization
+  // TODO #22 Pokemon Component implementation
   return (
     <SafeAreaView
       style={{

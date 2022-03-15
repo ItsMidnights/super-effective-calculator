@@ -51,6 +51,7 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
     };
   }, []);
 
+  // TODO #21 compartmentalize nested components
   return (
     <View style={styles.container}>
       <Animated.View

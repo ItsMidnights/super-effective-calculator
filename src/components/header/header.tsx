@@ -26,6 +26,7 @@ export const Header = () => {
     }).start();
   };
 
+  // TODO: #24 Add animation for Theme Icon
   return (
     <View
       style={{
@@ -44,54 +45,7 @@ export const Header = () => {
           justifyContent: "center",
         }}
       >
-        {/* <Animated.View
-          style={[
-            {
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              // backgroundColor: "orange",
-              transform: [
-                {
-                  translateX: animation.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [200, -100],
-                  }),
-                },
-              ],
-            },
-          ]}
-        >
-          <EvilIcons
-            name="search"
-            size={32}
-            color="grey"
-            onPress={toggleAnimation}
-          />
-        </Animated.View>
-        <Animated.View
-          style={{
-            // backgroundColor: "blue",
-            transform: [
-              {
-                translateY: animation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 50],
-                }),
-              },
-            ],
-          }}
-        >
-          <TextInput
-            placeholder="Search for a pokemon"
-            style={{
-              flex: 1,
-            }}
-          />
-        </Animated.View> */}
-        <SearchBarUI
-        // onPress={toggleAnimation}
-        />
+        <SearchBarUI />
       </View>
       <View
         style={{
