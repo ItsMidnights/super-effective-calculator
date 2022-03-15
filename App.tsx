@@ -1,7 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import LayoutProvider from "./src/context/layout/layout.provider";
 import { HomeNavigator, Routes } from "./src/routes";
-import { Platform, SafeAreaView, StatusBar } from "react-native";
+import {
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  useColorScheme,
+} from "react-native";
 import { injectWebCss } from "./src/functions/util";
 import { RecoilRoot } from "recoil";
 

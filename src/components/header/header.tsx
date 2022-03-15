@@ -2,6 +2,7 @@ import { EvilIcons, Feather } from "@expo/vector-icons";
 import React from "react";
 import { Animated, TextInput, View } from "react-native";
 import { SearchBar } from "react-native-elements";
+import { ThemeIcon } from "../icons/theme";
 import { SearchBarUI } from "../search-bar";
 
 export const Header = () => {
@@ -54,7 +55,7 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
-        <Feather name="sun" size={24} color="grey" />
+        <ThemeIcon />
       </View>
     </View>
   );
