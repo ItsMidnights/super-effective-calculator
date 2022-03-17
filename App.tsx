@@ -1,26 +1,16 @@
 import { NavigationContainer } from "@react-navigation/native";
-import LayoutProvider from "./src/context/layout/layout.provider";
 import { HomeNavigator, Routes } from "./src/routes";
-import {
-  Platform,
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-} from "react-native";
+import { Platform, SafeAreaView, StatusBar } from "react-native";
 import { injectWebCss } from "./src/functions/util";
 import { RecoilRoot } from "recoil";
+import Main from "./src/main";
 
 export default function App() {
   return (
     <NavigationContainer>
       <RecoilRoot>
-        {/* <LayoutProvider> */}
-        <StatusBar barStyle={"dark-content"} backgroundColor={"#998FC7"} />
-        <SafeAreaView style={{ flex: 1 }}>
-          {/* <Routes /> */}
-          <HomeNavigator />
-        </SafeAreaView>
-        {/* </LayoutProvider> */}
+        <Main />
+        {/* <Routes /> */}
       </RecoilRoot>
     </NavigationContainer>
   );

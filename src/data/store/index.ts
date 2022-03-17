@@ -6,3 +6,5 @@ export const layoutState = atom<LayoutType>({
   key: "layoutState",
   default: MOBILE,
 });
+
+export * from "./theme.atom";

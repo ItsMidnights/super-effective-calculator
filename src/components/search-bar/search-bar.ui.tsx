@@ -1,5 +1,4 @@
 import { Feather } from "@expo/vector-icons";
-import { mixin } from "lodash";
 import React, { createRef } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -15,6 +14,8 @@ import Animated, {
   runOnUI,
 } from "react-native-reanimated";
 import { mix, useTiming } from "react-native-redash";
+import { useRecoilValue } from "recoil";
+import { theme } from "../../data/store";
 
 export interface SearchBarUIProps {
   onPress?: () => void;
@@ -23,6 +24,7 @@ export interface SearchBarUIProps {
 export const SearchBarUI: React.FC<SearchBarUIProps> = ({
   onPress,
 }): JSX.Element => {
+  const currentTheme = useRecoilValue(theme);
   const open = useSharedValue(false);
   const progress = useDerivedValue(() =>
     open.value
@@ -65,7 +67,7 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
           <Feather
             name="search"
             size={24}
-            color="grey"
+            color={currentTheme === "light" ? "grey" : "#fff"}
             style={styles.searchIcon}
           />
         </TouchableOpacity>
@@ -73,19 +75,28 @@ export const SearchBarUI: React.FC<SearchBarUIProps> = ({
       <Animated.View style={[styles.textInputContainer, animatedStyle]}>
         <TextInput
           placeholder="Search for a Pokemon"
-          style={[styles.textInput]}
+          placeholderTextColor={currentTheme === "light" ? "grey" : "#fff"}
+          style={[
+            styles.textInput,
+            {
+              color: currentTheme === "light" ? "grey" : "#fff",
+            },
+          ]}
         />
       </Animated.View>
       <Animated.View
         style={[styles.crossIconContainer, animatedStyle]}
         onLayout={(e) => {
-          crossIconPositionX.value = e.nativeEvent.layout.x;
+          runOnUI(() => {
+            "worklet";
+            crossIconPositionX.value = e.nativeEvent.layout.x;
+          })();
         }}
       >
         <Feather
           name="x"
           size={24}
-          color="grey"
+          color={currentTheme === "light" ? "grey" : "#fff"}
           style={styles.crossIconContainer}
         />
       </Animated.View>

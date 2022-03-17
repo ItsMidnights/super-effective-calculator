@@ -1,6 +1,8 @@
 import React from "react";
 import { SafeAreaView, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { SafeContainer } from "../../components/safe-container";
+import { AwareStatusBar } from "../../components/status-bar";
 
 interface HomeProps {
   navigation: any;
@@ -12,12 +14,12 @@ export const Home: React.FC<HomeProps> = () => {
   // TODO #23 Home Componet Compartmentalization
   // TODO #22 Pokemon Component implementation
   return (
-    <SafeAreaView
+    <SafeContainer
       style={{
-        flex: 1,
         backgroundColor: "grey",
       }}
     >
+      <AwareStatusBar />
       {/* <TextInput
         style={{
           // display: searchBarShown ? "flex" : "none",
@@ -27,6 +29,6 @@ export const Home: React.FC<HomeProps> = () => {
         placeholder={"Search for a pokemon"}
       /> */}
       <View></View>
-    </SafeAreaView>
+    </SafeContainer>
   );
 };
