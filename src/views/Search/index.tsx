@@ -5,6 +5,7 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -91,7 +92,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={[styles.container, background.primary]}>
-      {/* <View style={{ flexDirection: "row" }}></View> */}
+      <StatusBar barStyle={"light-content"} backgroundColor={"#899499"} />
       <SearchBar
         placeholder="Search for a pokemon"
         onCancel={handleClear}
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     ...Platform.select({
       android: {
-        paddingTop: 40,
+        paddingTop: 10,
       },
     }),
   },

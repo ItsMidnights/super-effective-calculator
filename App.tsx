@@ -9,8 +9,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <RecoilRoot>
-        <Main />
-        {/* <Routes /> */}
+        {/* <Main /> */}
+        <Routes />
       </RecoilRoot>
     </NavigationContainer>
   );

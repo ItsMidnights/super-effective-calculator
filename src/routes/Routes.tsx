@@ -6,7 +6,7 @@ import { RootStackParamList } from "./routes.types";
 import { SearchBar } from "react-native-elements";
 import { EvilIcons, Feather, Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Animated, TextInput, View } from "react-native";
+import { Animated, TextInput, View, StatusBar } from "react-native";
 import { Header } from "../components/header";
 
 const RootStack = createStackNavigator<RootStackParamList>();
