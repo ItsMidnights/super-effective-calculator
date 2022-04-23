@@ -1,6 +1,6 @@
 # Super Effective Calculator
 
-An app for finding a Pokemon's Weaknesses with a quick search. The movitvation for this project was to solve having to solve the three step process of:
+An app for finding a Pokemon's Weaknesses with a quick search powered by PokeAPI. The movitvation for this project was to solve having to solve the three step process of:
 
 1. _Searching for the pokemon on google to find it's type/types._
 1. _Finding 2x damage types that would work on that pokemon._
