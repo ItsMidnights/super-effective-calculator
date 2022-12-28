@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { TouchableWithoutFeedback, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Excess } from "./sub/excessBubble";
 import { LeftGroup } from "./sub/leftGroup";
@@ -12,6 +12,8 @@ export interface TermUIProps {
   onPress?: () => void;
   term: string;
   types?: string[];
+  index: number;
+  lastTerm: boolean;
 }
 
 export const TermUI: React.FC<TermUIProps> = ({
@@ -20,10 +22,14 @@ export const TermUI: React.FC<TermUIProps> = ({
   onPress,
   term,
   types,
+  lastTerm,
 }): JSX.Element => {
+  console.log("lastterm", lastTerm);
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={termStyles.container}>
+      <View
+        style={[termStyles.container, lastTerm && termStyles.roundedBottom]}
+      >
         <LeftGroup leftIcon={leftIcon} term={term} />
         <TypeGroup types={types} />
         {excess != undefined && excess > 0 ? <Excess excess={excess} /> : null}

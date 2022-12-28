@@ -125,13 +125,27 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
           return idx.toLocaleString();
         }}
         renderItem={({ item, index }) => {
-          return (
-            <Term
-              key={index}
-              term={item.item}
-              onPress={async () => handleTermPress(item.item)}
-            />
-          );
+          console.log("length", results?.length);
+          if (index + 1 === results?.length) {
+            console.log("last term", true);
+            return (
+              <Term
+                lastTerm
+                index={index}
+                term={item.item}
+                onPress={async () => handleTermPress(item.item)}
+              />
+            );
+          } else {
+            return (
+              <Term
+                lastTerm={false}
+                index={index}
+                term={item.item}
+                onPress={async () => handleTermPress(item.item)}
+              />
+            );
+          }
         }}
       />
     </SafeAreaView>

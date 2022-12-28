@@ -10,10 +10,17 @@ export const searchBarStyles = StyleSheet.create({
   },
   searchBarContainer: {
     borderRadius: 25,
+    borderWidth: 0,
+  },
+  searchBarContainerFresh: {
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25,
+    borderBottomRightRadius: 0,
   },
   inputContainer: {
     backgroundColor: "#E1E8EE",
     borderRadius: 25,
+    borderWidth: 0,
   },
   input: {
     ...fonts.primary,
