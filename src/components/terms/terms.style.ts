@@ -9,10 +9,17 @@ export const termStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    borderTopWidth: 1,
+    borderTopWidth: 0,
     borderBottomWidth: 1,
+
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
     borderColor: "grey",
     backgroundColor: "#E1E8EE",
+  },
+  roundedBottom: {
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   bubble: {
     position: "absolute",
