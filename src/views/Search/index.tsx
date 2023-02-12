@@ -75,13 +75,12 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
     },
     [results, searchTerm]
   );
+
   const transitionHandler = React.useCallback(() => {
     navigation.addListener("transitionStart", () => {
       handleClear();
     });
   }, [navigation, searchTerm]);
-
-  useLayoutListener();
 
   React.useEffect(() => {
     const unsubscribe = transitionHandler;
@@ -92,7 +91,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={[styles.container, background.primary]}>
-      <StatusBar barStyle={"light-content"} backgroundColor={"#899499"} />
+      <StatusBar barStyle={"dark-content"} backgroundColor={"#C3ACD0"} />
       <SearchBar
         placeholder="Search for a pokemon"
         onCancel={handleClear}
@@ -125,9 +124,7 @@ export const Search: React.FC<ScreenProps> = ({ navigation }) => {
           return idx.toLocaleString();
         }}
         renderItem={({ item, index }) => {
-          console.log("length", results?.length);
           if (index + 1 === results?.length) {
-            console.log("last term", true);
             return (
               <Term
                 lastTerm
